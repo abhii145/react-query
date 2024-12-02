@@ -8,6 +8,7 @@ import SearchBar from "./SearchBar"
 import SortFilter from "./SortFilter"
 import CategoryFilter from "./CategoryFilter"
 import PaginationControls from "./PaginationControls"
+import NotFound from "./NotFound"
 
 const Home = () => {
   const [searchParam, setSearchParam] = useSearchParams(DEFAULT_SEARCH_PARAMS)
@@ -23,7 +24,7 @@ const Home = () => {
     Object.keys(SORT_OPTIONS).find(
       (key) =>
         SORT_OPTIONS[key].sortBy === sortBy && SORT_OPTIONS[key].order === order
-    ) || "Price: Low to High"
+    ) || "feature"
 
   const handleSortChange = (e) => {
     const value = e.target.value
@@ -89,24 +90,29 @@ const Home = () => {
           searchQuery={searchQuery}
           onSearchChange={handleSearchChange}
         />
-        <div className="flex flex-col sm:flex-row justify-between gap-4 items-center mb-6">
-          <SortFilter
-            onSortChange={handleSortChange}
-            selectedSort={sortByKey}
-          />
-          <CategoryFilter
-            categories={categories}
-            category={category}
-            onCategoryChange={handleCategoryChange}
-          />
-        </div>
-        <Product products={products} />
-        <PaginationControls
-          disablePrevious={disablePrevious}
-          disableNext={disableNext}
-          onMove={handleMove}
-          limit={limit}
-        />
+        {products.length > 0 && (
+          <>
+            <div className="flex flex-col sm:flex-row justify-between gap-4 items-center mb-6">
+              <SortFilter
+                onSortChange={handleSortChange}
+                selectedSort={sortByKey}
+              />
+              <CategoryFilter
+                categories={categories}
+                category={category}
+                onCategoryChange={handleCategoryChange}
+              />
+            </div>
+            <Product products={products} />
+            <PaginationControls
+              disablePrevious={disablePrevious}
+              disableNext={disableNext}
+              onMove={handleMove}
+              limit={limit}
+            />
+          </>
+        )}
+        {products.length === 0 && <NotFound />}
       </div>
     </div>
   )
