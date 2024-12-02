@@ -1,10 +1,10 @@
 
 export const SORT_OPTIONS = {
+  feature: { sortBy: "feature", order: "asc" },
   "Price: Low to High": { sortBy: "price", order: "asc" },
   "Price: High to Low": { sortBy: "price", order: "desc" },
   "Newest First": { sortBy: "date", order: "desc" },
   "Highest Rating": { sortBy: "rating", order: "desc" },
-  feature: { sortBy: "feature", order: "asc" },
 }
 
 export const DEFAULT_SEARCH_PARAMS = {
