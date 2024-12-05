@@ -9,6 +9,7 @@ import SortFilter from "./SortFilter"
 import CategoryFilter from "./CategoryFilter"
 import PaginationControls from "./PaginationControls"
 import NotFound from "./NotFound"
+import Loading from "./Loading" // Import Loading component
 
 const Home = () => {
   const [searchParam, setSearchParam] = useSearchParams(DEFAULT_SEARCH_PARAMS)
@@ -68,7 +69,7 @@ const Home = () => {
   }
 
   const { data: categories } = useCategories()
-  const { data, isSuccess } = useProducts({
+  const { data, isSuccess, isLoading } = useProducts({
     limit,
     skip,
     searchQuery,
@@ -82,6 +83,10 @@ const Home = () => {
 
   const disablePrevious = skip === 0
   const disableNext = isSuccess && skip + limit >= total
+
+  if (isLoading) {
+    return <Loading />
+  }
 
   return (
     <div className="bg-gray-50 min-h-screen p-6">

@@ -3,6 +3,7 @@ import Product from "./Product"
 import { useCallback, useEffect } from "react"
 import { useSearchParams } from "react-router"
 import { debounce } from "lodash"
+import Loading from "./Loading" // Import Loading component
 
 const Pagination = () => {
   const [searchParam, setSearchParam] = useSearchParams({
@@ -107,7 +108,7 @@ const Pagination = () => {
     }
   }
 
-  const { data, isSuccess } = useQuery({
+  const { data, isSuccess, isLoading } = useQuery({
     queryKey: ["products", limit, skip, searchQuery, category, sortBy, order],
     queryFn: fetchProducts,
     // placeholderData: { products: [], total: 0 },
@@ -121,6 +122,10 @@ const Pagination = () => {
   // Check if buttons should be disabled
   const disablePrevious = skip === 0
   const disableNext = isSuccess && skip + limit >= total
+
+  if (isLoading) {
+    return <Loading /> // Show Loading component while data is being fetched
+  }
 
   return (
     <div className="bg-gray-50 min-h-screen p-6">
