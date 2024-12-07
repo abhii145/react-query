@@ -8,6 +8,8 @@ import {
 import { FaHeart, FaMinus, FaPlus } from "react-icons/fa6"
 import { MdDelete } from "react-icons/md"
 import { toggleFavorite } from "../store/favoritesSlice"
+import EmptyStateCard from "./EmptyStateCard"
+import { IoCartOutline } from "react-icons/io5"
 
 const Cart = () => {
   const dispatch = useDispatch()
@@ -27,19 +29,33 @@ const Cart = () => {
   }
 
   const handleToggleFavorite = (item) => {
-    dispatch(toggleFavorite(item)) // Toggle favorite status
+    dispatch(toggleFavorite(item))
   }
 
   const calculateTotal = () => {
-    return cartItems?.reduce(
-      (total, item) => total + item.price * item.quantity,
-      0
+    return cartItems
+      ?.reduce((total, item) => total + item.price * item.quantity, 0)
+      .toFixed(2)
+  }
+
+  const handleButtonClick = () => {
+    console.log("Button clicked")
+  }
+
+  if (cartItems.length === 0) {
+    return (
+      <EmptyStateCard
+        icon={IoCartOutline}
+        heading="Your Cart is Empty"
+        subheading="Start shopping your favorite items now."
+        buttonLabel="Shop Now"
+      />
     )
   }
 
   return (
-    <div className="font-sans max-w-4xl max-md:max-w-xl mx-auto p-4">
-      <h1 className="text-2xl font-extrabold text-gray-800">Your Cart</h1>
+    <div className="font-sans max-w-4xl max-md:max-w-xl mx-auto p-4 bg-grey-50">
+      <h1 className="text-2xl font-extrabold text-gray-800">Shopping Cart</h1>
       <div className="grid md:grid-cols-3 gap-4 mt-8">
         {/* Cart Items */}
         <div className="md:col-span-2 space-y-4">
@@ -57,20 +73,17 @@ const Cart = () => {
                     <img
                       src={item?.thumbnail}
                       className="w-full h-full object-contain"
+                      alt={item.title}
                     />
                   </div>
 
                   <div className="flex flex-col gap-4">
                     <div>
-                      <h3 className="text-base font-bold text-gray-800">
-                        {item.name}
-                      </h3>
-                      <p className="text-sm font-semibold text-gray-500 mt-2 flex items-center gap-2">
+                      <p className="text-sm font-semibold text-gray-800 mt-2 flex items-center gap-2">
                         {item.title}
-                        <span
-                          className="inline-block w-5 h-5 rounded-md"
-                          style={{ backgroundColor: item.color }}
-                        ></span>
+                      </p>
+                      <p className="text-sm font-bold text-gray-500">
+                        {item.description.slice(0, 90)}...
                       </p>
                     </div>
 
@@ -111,7 +124,7 @@ const Cart = () => {
                     />
                   </div>
                   <h3 className="text-base font-bold text-gray-800 mt-auto">
-                    ${item.price * item.quantity}
+                    ${(item.price * item.quantity).toFixed(2)}
                   </h3>
                 </div>
               </div>

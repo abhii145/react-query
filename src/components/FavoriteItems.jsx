@@ -1,53 +1,69 @@
 import { useDispatch, useSelector } from "react-redux"
-import { FaTrash } from "react-icons/fa6"
-import { removeFromCart } from "../store/cartSlice"
+import { FaHeart, FaTrash } from "react-icons/fa6"
 import { toggleFavorite } from "../store/favoritesSlice"
+import { Link } from "react-router-dom"
+import EmptyStateCard from "./EmptyStateCard"
 
 const FavoriteItems = () => {
   const dispatch = useDispatch()
-    const favoriteItems = useSelector((state) => state.favorites.favorites)
-    console.log(favoriteItems)
+  const favoriteItems = useSelector((state) => state.favorites.favorites)
 
-    const handleRemoveFromFavorites = (item) => {
-      dispatch(toggleFavorite(item))
-    }
+  const handleRemoveFromFavorites = (item) => {
+    dispatch(toggleFavorite(item))
+  }
 
   return (
-    <div className="font-sans max-w-4xl mx-auto p-4">
-      <h1 className="text-2xl font-extrabold text-gray-800">Your Favorites</h1>
-      <div className="grid md:grid-cols-3 gap-4 mt-8">
-        {favoriteItems.length > 0 ? (
-          favoriteItems.map((item) => (
-            <div
-              key={item.id}
-              className="flex gap-4 bg-white px-4 py-6 rounded-md shadow-[0_2px_12px_-3px_rgba(6,81,237,0.3)]"
-            >
-              <div className="w-28 h-28 max-sm:w-24 max-sm:h-24 shrink-0">
-                <img
-                  src={item.thumbnail}
-                  className="w-full h-full object-contain"
-                />
-              </div>
-              <div className="flex flex-col gap-4">
-                <h3 className="text-base font-bold text-gray-800">
-                  {item.name}
-                </h3>
-                <p className="text-sm font-semibold text-gray-500 mt-2">
-                  {item.title}
-                </p>
-              </div>
-              <div className="ml-auto flex flex-col">
-                <FaTrash
-                  size={20}
-                  color="red"
-                  onClick={() => handleRemoveFromFavorites(item)}
-                  className="cursor-pointer"
-                />
-              </div>
-            </div>
-          ))
+    <div className="bg-grey-50">
+      <div className="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-12 lg:max-w-7xl lg:px-8">
+        <h1 className="text-3xl font-extrabold text-gray-900 mb-6">
+          Your Favorites
+        </h1>
+        {favoriteItems.length === 0 ? (
+          <EmptyStateCard
+            icon={FaHeart}
+            heading="Your Favorites is Empty"
+            subheading="Start adding your favorite items now."
+            buttonLabel="Shop Now"
+          />
         ) : (
-          <p>No favorite items yet</p>
+          <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+            {favoriteItems.map((item) => (
+              <div
+                key={item.id}
+                className="group relative bg-gray-200 rounded-md overflow-hidden"
+              >
+                {/* Product Image */}
+                <img
+                  loading="lazy"
+                  alt={item.title}
+                  src={item.thumbnail}
+                  className="aspect-square w-full object-cover group-hover:opacity-75"
+                />
+                {/* Title and Price Overlay */}
+                <div className="absolute inset-x-0 bottom-0 bg-black/60 text-white p-4">
+                  <div className="flex justify-between items-center">
+                    <h3 className="text-sm font-bold">
+                      <Link to={`/product/${item.id}`}>
+                        <span aria-hidden="true" className="absolute inset-0" />
+                        {item.name}
+                      </Link>
+                    </h3>
+                    <p className="text-sm font-bold">${item.price}</p>
+                  </div>
+                  <p className="mt-1 text-sm">{item.title}</p>
+                </div>
+                {/* Delete Button */}
+                <div className="absolute top-2 right-2">
+                  <button
+                    onClick={() => handleRemoveFromFavorites(item)}
+                    className="p-2 bg-red-100 rounded-full hover:bg-red-200"
+                  >
+                    <FaTrash size={16} color="red" />
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
         )}
       </div>
     </div>
