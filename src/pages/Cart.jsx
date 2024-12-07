@@ -49,7 +49,7 @@ const Cart = () => {
   }
 
   return (
-    <div className="font-sans max-w-4xl max-md:max-w-xl mx-auto p-4 bg-grey-50">
+    <div className="font-sans max-w-[77rem] max-md:max-w-xl mx-auto p-4 bg-grey-50">
       <h1 className="text-2xl font-extrabold text-gray-800">Shopping Cart</h1>
       <div className="grid md:grid-cols-3 gap-4 mt-8">
         {/* Cart Items */}
@@ -57,7 +57,7 @@ const Cart = () => {
           {cartItems.map((item) => {
             const isFavorite = favoriteItems.some(
               (favorite) => favorite.id === item.id
-            )
+            );
             return (
               <div
                 key={item.id}
@@ -69,6 +69,7 @@ const Cart = () => {
                       src={item?.thumbnail}
                       className="w-full h-full object-contain"
                       alt={item.title}
+                      loading="lazy"
                     />
                   </div>
 
@@ -123,7 +124,7 @@ const Cart = () => {
                   </h3>
                 </div>
               </div>
-            )
+            );
           })}
         </div>
 
@@ -166,22 +167,25 @@ const Cart = () => {
               src="https://readymadeui.com/images/master.webp"
               alt="card1"
               className="w-10 object-contain"
+              loading="lazy"
             />
             <img
               src="https://readymadeui.com/images/visa.webp"
               alt="card2"
               className="w-10 object-contain"
+              loading="lazy"
             />
             <img
               src="https://readymadeui.com/images/american-express.webp"
               alt="card3"
               className="w-10 object-contain"
+              loading="lazy"
             />
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default Cart

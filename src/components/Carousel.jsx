@@ -38,6 +38,7 @@ const Carousel = ({ images }) => {
               <img
                 src={image}
                 alt={`carousel-image-${index}`}
+                loading="lazy"
                 className="w-full h-[300px] lg:h-[400px] object-contain rounded-lg shadow-lg"
               />
             </div>
