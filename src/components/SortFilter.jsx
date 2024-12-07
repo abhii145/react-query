@@ -1,4 +1,5 @@
 import { SORT_OPTIONS } from "../constants"
+import PropTypes from "prop-types"
 
 const SortFilter = ({ onSortChange, selectedSort }) => (
   <div className="flex items-center gap-2">
@@ -19,5 +20,9 @@ const SortFilter = ({ onSortChange, selectedSort }) => (
     </select>
   </div>
 )
+SortFilter.propTypes = {
+  onSortChange: PropTypes.func.isRequired,
+  selectedSort: PropTypes.string.isRequired,
+}
 
 export default SortFilter

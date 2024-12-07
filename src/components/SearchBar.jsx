@@ -1,4 +1,5 @@
 import { useState } from "react"
+import PropTypes from "prop-types"
 import { AiOutlineClose } from "react-icons/ai"
 
 const SearchBar = ({ searchQuery, onSearchChange }) => {
@@ -32,6 +33,10 @@ const SearchBar = ({ searchQuery, onSearchChange }) => {
       )}
     </div>
   )
+}
+SearchBar.propTypes = {
+  searchQuery: PropTypes.string.isRequired,
+  onSearchChange: PropTypes.func.isRequired,
 }
 
 export default SearchBar

@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
 import {
-  clearCart,
   decreaseQuantity,
   increaseQuantity,
   removeFromCart,
@@ -8,7 +7,7 @@ import {
 import { FaHeart, FaMinus, FaPlus } from "react-icons/fa6"
 import { MdDelete } from "react-icons/md"
 import { toggleFavorite } from "../store/favoritesSlice"
-import EmptyStateCard from "./EmptyStateCard"
+import EmptyStateCard from "../components/EmptyStateCard"
 import { IoCartOutline } from "react-icons/io5"
 
 const Cart = () => {
@@ -36,10 +35,6 @@ const Cart = () => {
     return cartItems
       ?.reduce((total, item) => total + item.price * item.quantity, 0)
       .toFixed(2)
-  }
-
-  const handleButtonClick = () => {
-    console.log("Button clicked")
   }
 
   if (cartItems.length === 0) {

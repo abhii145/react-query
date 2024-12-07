@@ -1,8 +1,7 @@
-/* eslint-disable react/prop-types */
-
 import { Link } from "react-router"
+import PropTypes from "prop-types"
 
-const Product = ({ products }) => {
+const ProductCard = ({ products }) => {
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
@@ -40,5 +39,16 @@ const Product = ({ products }) => {
     </div>
   )
 }
+ProductCard.propTypes = {
+  products: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      thumbnail: PropTypes.string.isRequired,
+      category: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+    })
+  ).isRequired,
+}
 
-export default Product
+export default ProductCard

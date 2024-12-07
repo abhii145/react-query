@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux"
 import { FaHeart, FaTrash } from "react-icons/fa6"
 import { toggleFavorite } from "../store/favoritesSlice"
-import { Link } from "react-router-dom"
-import EmptyStateCard from "./EmptyStateCard"
+import { Link } from "react-router"
+import EmptyStateCard from "../components/EmptyStateCard"
 
 const FavoriteItems = () => {
   const dispatch = useDispatch()

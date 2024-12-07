@@ -1,14 +1,14 @@
 import { useQuery } from "@tanstack/react-query"
 import { useState, useEffect } from "react"
-import {  useParams } from "react-router"
-import Loading from "./Loading"
+import { useParams } from "react-router"
+import Loading from "../components/Loading"
 import { useDispatch } from "react-redux"
 import { addToCart } from "../store/cartSlice"
 
 const ProductDetails = () => {
   const { id } = useParams()
   const [selectedImage, setSelectedImage] = useState("")
-   const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
   const fetchSingleProducts = async () => {
     const response = await fetch(`https://dummyjson.com/products/${id}`)
@@ -38,11 +38,11 @@ const ProductDetails = () => {
     }
   }, [product])
 
- const handleAddToCart = () => {
-   if (product) {
-     dispatch(addToCart(product)) // Dispatch action to add to cart
-   }
- }
+  const handleAddToCart = () => {
+    if (product) {
+      dispatch(addToCart(product)) // Dispatch action to add to cart
+    }
+  }
 
   const handleThumbnailClick = (image) => {
     setSelectedImage(image)
