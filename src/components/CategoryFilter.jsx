@@ -1,7 +1,11 @@
+import PropTypes from "prop-types"
 
 const CategoryFilter = ({ categories, category, onCategoryChange }) => (
   <div className="flex items-center gap-2">
-    <label htmlFor="category" className="text-sm font-medium text-gray-600 whitespace-nowrap">
+    <label
+      htmlFor="category"
+      className="text-sm font-medium text-gray-600 whitespace-nowrap"
+    >
       Category:
     </label>
     <select
@@ -19,5 +23,16 @@ const CategoryFilter = ({ categories, category, onCategoryChange }) => (
     </select>
   </div>
 )
+
+CategoryFilter.propTypes = {
+  categories: PropTypes.arrayOf(
+    PropTypes.shape({
+      slug: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  category: PropTypes.string.isRequired,
+  onCategoryChange: PropTypes.func.isRequired,
+}
 
 export default CategoryFilter

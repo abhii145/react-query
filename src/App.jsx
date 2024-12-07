@@ -1,27 +1,32 @@
 import { BrowserRouter, Route, Routes } from "react-router"
-import ProductDetails from "./components/ProductDetails"
-import Home from "./components/Home"
-import HomePage from "./components/HomePage"
-import Header from "./components/Header"
-import Footer from "./components/Footer"
-import Cart from "./components/Cart"
-import FavoriteItems from "./components/FavoriteItems"
+import { Footer, Header } from "./components"
+import {
+  Cart,
+  FavoriteItems,
+  LandingPage,
+  ProductListingPage,
+  ProductDetails,
+} from "./pages"
+import { Suspense } from "react"
+import Loader from "./components/Loading"
 
 export default function App() {
   return (
     <BrowserRouter>
       <div className="flex flex-col min-h-screen">
-        <Header />
-        <main className="flex-grow">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/products" element={<Home />} />
-            <Route path="/product/:id" element={<ProductDetails />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/favourite" element={<FavoriteItems />} />
-          </Routes>
-        </main>
-        <Footer />
+        <Suspense fallback={<Loader />}>
+          <Header />
+          <main className="flex-grow">
+            <Routes>
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/products" element={<ProductListingPage />} />
+              <Route path="/product/:id" element={<ProductDetails />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/favourite" element={<FavoriteItems />} />
+            </Routes>
+          </main>
+          <Footer />
+        </Suspense>
       </div>
     </BrowserRouter>
   )

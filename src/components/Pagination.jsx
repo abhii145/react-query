@@ -1,9 +1,9 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query"
-import Product from "./Product"
+import Product from "./ProductCard"
 import { useCallback, useEffect } from "react"
 import { useSearchParams } from "react-router"
 import { debounce } from "lodash"
-import Loading from "./Loading" // Import Loading component
+import Loading from "./Loading"
 
 const Pagination = () => {
   const [searchParam, setSearchParam] = useSearchParams({

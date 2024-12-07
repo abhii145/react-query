@@ -3,15 +3,17 @@ import { useCallback } from "react"
 import { debounce } from "lodash"
 import { useCategories, useProducts } from "../hooks/useProducts"
 import { SORT_OPTIONS, DEFAULT_SEARCH_PARAMS } from "../constants"
-import Product from "./Product"
-import SearchBar from "./SearchBar"
-import SortFilter from "./SortFilter"
-import CategoryFilter from "./CategoryFilter"
-import PaginationControls from "./PaginationControls"
-import NotFound from "./NotFound"
-import Loading from "./Loading" // Import Loading component
+import Loading from "../components/Loading" // Import Loading component
+import {
+  CategoryFilter,
+  NotFound,
+  PaginationControls,
+  ProductCard,
+  SearchBar,
+  SortFilter,
+} from "../components"
 
-const Home = () => {
+const ProductListingPage = () => {
   const [searchParam, setSearchParam] = useSearchParams(DEFAULT_SEARCH_PARAMS)
 
   const limit = parseInt(searchParam.get("limit"))
@@ -49,15 +51,17 @@ const Home = () => {
   }
 
   const handleSearchChange = useCallback(
-    debounce((value) => {
-      setSearchParam((prev) => {
-        prev.delete("category")
-        prev.set("search", value)
-        prev.set("skip", 0)
-        return prev
-      })
-      console.log("Search:", value)
-    }, 500),
+    (value) => {
+      debounce(() => {
+        setSearchParam((prev) => {
+          prev.delete("category")
+          prev.set("search", value)
+          prev.set("skip", 0)
+          return prev
+        })
+        console.log("Search:", value)
+      }, 500)()
+    },
     [setSearchParam]
   )
 
@@ -108,7 +112,7 @@ const Home = () => {
                 onCategoryChange={handleCategoryChange}
               />
             </div>
-            <Product products={products} />
+            <ProductCard products={products} />
             <PaginationControls
               disablePrevious={disablePrevious}
               disableNext={disableNext}
@@ -123,4 +127,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default ProductListingPage
