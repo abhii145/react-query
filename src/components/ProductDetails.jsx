@@ -1,13 +1,15 @@
 import { useQuery } from "@tanstack/react-query"
 import { useState, useEffect } from "react"
-import { useLocation, useParams } from "react-router"
+import {  useParams } from "react-router"
 import Loading from "./Loading"
+import { useDispatch } from "react-redux"
+import { addToCart } from "../store/cartSlice"
 
 const ProductDetails = () => {
   const { id } = useParams()
   const [selectedImage, setSelectedImage] = useState("")
-  const location = useLocation()
-  console.log(location)
+   const dispatch = useDispatch()
+
   const fetchSingleProducts = async () => {
     const response = await fetch(`https://dummyjson.com/products/${id}`)
     const data = await response.json()
@@ -30,16 +32,17 @@ const ProductDetails = () => {
     },
   })
 
-  // Update selectedImage when product data changes (cached or fresh)
   useEffect(() => {
     if (product?.images && product.images.length > 0) {
       setSelectedImage((current) => current || product.images[0])
     }
   }, [product])
 
-  const handleAddToCart = () => {
-    console.log(`Added ${product.title} to cart!`)
-  }
+ const handleAddToCart = () => {
+   if (product) {
+     dispatch(addToCart(product)) // Dispatch action to add to cart
+   }
+ }
 
   const handleThumbnailClick = (image) => {
     setSelectedImage(image)

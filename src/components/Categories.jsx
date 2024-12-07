@@ -1,9 +1,15 @@
 import { Link } from "react-router"
 import { useCategories } from "../hooks/useProducts"
 import { categoryIcons } from "../constants"
+import Loading from "./Loading"
 
 const Categories = () => {
-  const { data: categories } = useCategories()
+  const { data: categories, isLoading } = useCategories()
+
+  if (isLoading) {
+    return <Loading />
+  }
+
   return (
     <section>
       <div className="flex justify-between items-center mb-4">
