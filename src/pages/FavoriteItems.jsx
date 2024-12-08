@@ -62,6 +62,7 @@ const FavoriteItems = () => {
                   <button
                     onClick={() => handleRemoveFromFavorites(item)}
                     className="p-2 bg-red-100 rounded-full hover:bg-red-200"
+                    data-testid={`delete-${item.id}`}
                   >
                     <FaTrash size={16} color="red" />
                   </button>

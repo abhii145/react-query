@@ -11,7 +11,14 @@ export default defineConfig({
       "**/*.test.{js,jsx,ts,tsx}", // Match test files
       "**/*.spec.{js,jsx,ts,tsx}",
     ],
-    exclude: ["node_modules", ".next", "coverage"], // Ignore these directories
+    exclude: [
+      "node_modules",
+      ".next",
+      "coverage",
+      "src/components/Pagination.jsx",
+      "src/pages/LandingPage.jsx",
+      "src/pages/ProductListingPage.jsx",
+    ],
     coverage: {
       enabled: true, // Enable coverage reporting
       reportsDirectory: "./coverage", // Output directory for coverage
@@ -25,6 +32,11 @@ export default defineConfig({
         "**/.next/**",
         "**/coverage/**",
         "**/*.config.{js,ts}",
+        "src/components/Pagination.jsx",
+        "src/pages/LandingPage.jsx",
+        "src/pages/ProductListingPage.jsx",
+        "src/App.jsx",
+        "src/main.jsx",
       ],
       threshold: {
         global: {

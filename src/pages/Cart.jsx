@@ -71,7 +71,7 @@ const Cart = () => {
       <div className="grid md:grid-cols-3 gap-4 mt-8">
         {/* Cart Items */}
         <div className="md:col-span-2 space-y-4">
-          {cartItems.map((item) => {
+          {cartItems?.map((item) => {
             const isFavorite = favoriteItems.some(
               (favorite) => favorite.id === item.id
             )
@@ -104,6 +104,7 @@ const Cart = () => {
                       <button
                         onClick={() => handleDecrease(item.id)}
                         className="flex items-center justify-center w-5 h-5 bg-gray-400 outline-none rounded-full"
+                        data-testid={`decrease-${item.id}`}
                       >
                         <FaMinus />
                       </button>
@@ -113,6 +114,7 @@ const Cart = () => {
                       <button
                         onClick={() => handleIncrease(item.id)}
                         className="flex items-center justify-center w-5 h-5 bg-gray-400 outline-none rounded-full"
+                        data-testid={`increase-${item.id}`}
                       >
                         <FaPlus />
                       </button>
@@ -127,6 +129,7 @@ const Cart = () => {
                       size={20}
                       onClick={() => handleToggleFavorite(item)}
                       className="cursor-pointer"
+                      data-testid={`favorite-${item.id}`}
                     />
 
                     <MdDelete
@@ -134,6 +137,7 @@ const Cart = () => {
                       color="red"
                       onClick={() => handleRemove(item.id)}
                       className="cursor-pointer"
+                      data-testid={`delete-${item.id}`}
                     />
                   </div>
                   <h3 className="text-base font-bold text-gray-800 mt-auto">

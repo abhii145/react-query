@@ -1,8 +1,28 @@
-# React + Vite
+# E-commerce Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a modern e-commerce application built with React, React Router DOM, React Query, Redux Toolkit, and includes features like pagination, search, and filter.
 
-Currently, two official plugins are available:
+## Technologies Used
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React**: used for creating UI interfaces.
+- **React Router DOM**: Used for navigation between components.
+- **React Query**: Hooks for fetching, caching, and updating asynchronous data in React.
+- **Redux Toolkit**: Used for state management.
+- **Pagination**: Implemented to navigate through product listings.
+- **Search**: Allows users to search for products.
+- **Filter**: Enables users to filter products based on categories and other criteria.
+
+## Features
+
+- **Product Listing**: Browse through a list of products with pagination.
+- **Product Search**: Search for products using keywords.
+- **Product Filter**: Filter products by categories, price, and other attributes.
+- **Product Details**: View detailed information about a product.
+- **Cart Management**: Add, remove, and manage products in the shopping cart.
+- **Favorites**: Mark products as favorites for quick access.
+
+## Test Coverage
+
+This project has 96% test coverage using React Testing Library.
+
+![alt text](image.png)

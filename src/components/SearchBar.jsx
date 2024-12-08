@@ -28,6 +28,7 @@ const SearchBar = ({ searchQuery, onSearchChange }) => {
       {inputValue && (
         <AiOutlineClose
           onClick={clearInput}
+          data-testid="clear-button"
           className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-500"
         />
       )}
