@@ -58,11 +58,11 @@ const ProductDetails = () => {
   }
 
   if (error) {
-    return <h1>Error: {error.message}</h1>
+    return <h1 data-testid="error">Error: {error.message}</h1>
   }
 
   return (
-    <div className="bg-gray-50 min-h-screen p-6">
+    <div className="bg-gray-50 min-h-screen p-6" data-testid="product-details">
       <div className="max-w-7xl mx-auto bg-white rounded-lg shadow p-6 flex flex-col min-h-[calc(100vh-3rem)]">
         {/* Content Section */}
         <div className="flex flex-col lg:flex-row gap-8 flex-grow">
@@ -74,6 +74,7 @@ const ProductDetails = () => {
                 src={selectedImage}
                 alt={product.title}
                 className="object-contain w-full h-full"
+                data-testid="selected-image"
               />
             </div>
             {/* Thumbnail Selector */}
@@ -92,6 +93,7 @@ const ProductDetails = () => {
                       selectedImage === image ? "ring-2 ring-blue-500" : ""
                     }`}
                     aria-label={`Select image ${index + 1}`}
+                    data-testid={`thumbnail-${index}`}
                   >
                     <img
                       src={image}
@@ -107,11 +109,11 @@ const ProductDetails = () => {
 
           {/* Product Details */}
           <div className="flex-1 space-y-6">
-            <h1 className="text-2xl font-bold text-gray-800">
+            <h1 className="text-2xl font-bold text-gray-800" data-testid="product-title">
               {product.title}
             </h1>
             <p className="text-gray-600">{product.description}</p>
-            <p className="text-lg font-semibold text-gray-800">
+            <p className="text-lg font-semibold text-gray-800" data-testid="product-price">
               Price: ${product.price}
             </p>
             <p className="text-gray-600">
@@ -128,6 +130,7 @@ const ProductDetails = () => {
             <button
               onClick={handleAddToCart}
               className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition"
+              data-testid="add-to-cart"
             >
               Add to Cart
             </button>
