@@ -3,6 +3,7 @@ import { FaHeart, FaTrash } from "react-icons/fa6"
 import { toggleFavorite } from "../store/favoritesSlice"
 import { Link } from "react-router"
 import EmptyStateCard from "../components/EmptyStateCard"
+import { toast } from "react-toastify"
 
 const FavoriteItems = () => {
   const dispatch = useDispatch()
@@ -10,6 +11,10 @@ const FavoriteItems = () => {
 
   const handleRemoveFromFavorites = (item) => {
     dispatch(toggleFavorite(item))
+    toast.error("Removed from favorites", {
+      position: "bottom-right",
+      autoClose: 800,
+    })
   }
 
   return (

@@ -10,6 +10,7 @@ import {
 import { Suspense } from "react"
 import Loader from "./components/Loading"
 
+
 export default function App() {
   return (
     <BrowserRouter>
