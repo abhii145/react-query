@@ -4,6 +4,7 @@ import { useParams } from "react-router"
 import Loading from "../components/Loading"
 import { useDispatch } from "react-redux"
 import { addToCart } from "../store/cartSlice"
+import { toast } from "react-toastify"
 
 const ProductDetails = () => {
   const { id } = useParams()
@@ -40,7 +41,11 @@ const ProductDetails = () => {
 
   const handleAddToCart = () => {
     if (product) {
-      dispatch(addToCart(product)) // Dispatch action to add to cart
+      dispatch(addToCart(product))
+      toast.success("added to cart", {
+        position: "bottom-right",
+        autoClose: 800,
+      })
     }
   }
 

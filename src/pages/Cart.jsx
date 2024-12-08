@@ -9,6 +9,7 @@ import { MdDelete } from "react-icons/md"
 import { toggleFavorite } from "../store/favoritesSlice"
 import EmptyStateCard from "../components/EmptyStateCard"
 import { IoCartOutline } from "react-icons/io5"
+import { toast } from "react-toastify"
 
 const Cart = () => {
   const dispatch = useDispatch()
@@ -25,10 +26,26 @@ const Cart = () => {
 
   const handleRemove = (productId) => {
     dispatch(removeFromCart(productId))
+    toast.error("product deleted", {
+      position: "bottom-right",
+      autoClose: 800,
+    })
   }
 
   const handleToggleFavorite = (item) => {
+    const isFavorite = favoriteItems.some((favorite) => favorite.id === item.id)
     dispatch(toggleFavorite(item))
+    if (isFavorite) {
+      toast.info("Removed from favorites", {
+        position: "bottom-right",
+        autoClose: 800,
+      })
+    } else {
+      toast.success("Added to favorites", {
+        position: "bottom-right",
+        autoClose: 800,
+      })
+    }
   }
 
   const calculateTotal = () => {
@@ -57,7 +74,7 @@ const Cart = () => {
           {cartItems.map((item) => {
             const isFavorite = favoriteItems.some(
               (favorite) => favorite.id === item.id
-            );
+            )
             return (
               <div
                 key={item.id}
@@ -124,7 +141,7 @@ const Cart = () => {
                   </h3>
                 </div>
               </div>
-            );
+            )
           })}
         </div>
 
@@ -185,7 +202,7 @@ const Cart = () => {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 export default Cart
