@@ -38,8 +38,9 @@ The project adheres to best practices and achieves the following performance met
 - **SEO Score**: 100
 - **Best Practices**: 100
 - **Accessibility**: 100
-- **Performance**: 58
+- **Performance**: 74
 
+<img width="784" alt="image" src="https://github.com/user-attachments/assets/af9a0829-bb7e-4201-bbea-67b40a9e116e" />
 
 
 ## Run Test Cases
