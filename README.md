@@ -29,7 +29,8 @@ This project achieves **95% test coverage** using the following tools:
 - **Snapshot Testing**: To ensure consistent UI rendering.
 - **Playwright**: For end-to-end (E2E) testing with report generation.
 
-![Performance Metrics](image.png)
+<img width="1223" alt="image" src="https://github.com/user-attachments/assets/6950f24a-bb8b-42c0-b9f0-dccdb8af24e8" />
+
 
 ## Performance and Best Practices
 
