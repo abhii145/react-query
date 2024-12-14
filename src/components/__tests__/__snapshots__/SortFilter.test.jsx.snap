@@ -1,0 +1,46 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SortFilter > matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="flex items-center gap-2"
+  >
+    <label
+      class="text-sm font-medium text-gray-600"
+      for="sort"
+    >
+      Sort By:
+    </label>
+    <select
+      class="p-2 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+      id="sort"
+    >
+      <option
+        value="feature"
+      >
+        feature
+      </option>
+      <option
+        value="Price: Low to High"
+      >
+        Price: Low to High
+      </option>
+      <option
+        value="Price: High to Low"
+      >
+        Price: High to Low
+      </option>
+      <option
+        value="Newest First"
+      >
+        Newest First
+      </option>
+      <option
+        value="Highest Rating"
+      >
+        Highest Rating
+      </option>
+    </select>
+  </div>
+</DocumentFragment>
+`;

@@ -1,10 +1,14 @@
-// src/components/__tests__/Carousel.test.jsx
 import { render, screen, fireEvent } from "@testing-library/react"
 import Carousel from "../Carousel"
 import { it, expect, describe, vi } from "vitest"
 
 describe("Carousel", () => {
   const images = ["image1.jpg", "image2.jpg", "image3.jpg"]
+
+  it("matches snapshot", () => {
+    const { asFragment } = render(<Carousel images={images} />)
+    expect(asFragment()).toMatchSnapshot()
+  })
 
   it("renders correctly", () => {
     render(<Carousel images={images} />)

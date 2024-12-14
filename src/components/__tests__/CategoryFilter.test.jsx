@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react"
 import CategoryFilter from "../CategoryFilter"
-import { test, expect, describe, vi } from "vitest"
+import { it, expect, describe, vi } from "vitest"
 
 const categories = [
   { slug: "electronics", name: "Electronics" },
@@ -8,7 +8,19 @@ const categories = [
 ]
 
 describe("CategoryFilter component", () => {
-  test("renders CategoryFilter component", () => {
+  it("matches snapshot", () => {
+    const handleCategoryChange = vi.fn()
+    const { asFragment } = render(
+      <CategoryFilter
+        categories={categories}
+        category="All"
+        onCategoryChange={handleCategoryChange}
+      />
+    )
+    expect(asFragment()).toMatchSnapshot()
+  })
+
+  it("renders CategoryFilter component", () => {
     const handleCategoryChange = vi.fn()
 
     render(
@@ -28,7 +40,7 @@ describe("CategoryFilter component", () => {
     expect(screen.getByRole("option", { name: "Fashion" })).toBeInTheDocument()
   })
 
-  test("calls onCategoryChange when a new category is selected", () => {
+  it("calls onCategoryChange when a new category is selected", () => {
     const handleCategoryChange = vi.fn()
 
     render(

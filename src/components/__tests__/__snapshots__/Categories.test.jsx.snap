@@ -1,0 +1,56 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Categories > matches snapshot 1`] = `
+<DocumentFragment>
+  <section>
+    <div
+      class="flex justify-between items-center mb-4"
+    >
+      <h2
+        class="text-2xl font-bold"
+      >
+        Categories
+      </h2>
+      <a
+        class="text-blue-700 hover:underline text-sm"
+        data-discover="true"
+        href="/products"
+      >
+        View All Products
+      </a>
+    </div>
+    <div
+      class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"
+    >
+      <a
+        class="p-4 bg-white rounded-lg shadow hover:bg-gray-200 flex items-center gap-3"
+        data-discover="true"
+        href="/products?category=electronics"
+      >
+        <div
+          class="text-blue-700 text-2xl"
+        />
+        <span
+          class="font-medium"
+        >
+          Electronics
+        </span>
+      </a>
+      <a
+        class="p-4 bg-white rounded-lg shadow hover:bg-gray-200 flex items-center gap-3"
+        data-discover="true"
+        href="/products?category=fashion"
+      >
+        <div
+          class="text-blue-700 text-2xl"
+        />
+        <span
+          class="font-medium"
+        >
+          Fashion
+        </span>
+      </a>
+    </div>
+  </section>
+</DocumentFragment>
+`;

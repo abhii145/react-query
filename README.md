@@ -4,7 +4,7 @@ This is a modern e-commerce application built with React, React Router DOM, Reac
 
 ## Technologies Used
 
-- **React**: used for creating UI interfaces.
+- **React**: Used for creating UI interfaces.
 - **React Router DOM**: Used for navigation between components.
 - **React Query**: Hooks for fetching, caching, and updating asynchronous data in React.
 - **Redux Toolkit**: Used for state management.
@@ -23,6 +23,31 @@ This is a modern e-commerce application built with React, React Router DOM, Reac
 
 ## Test Coverage
 
-This project has 96% test coverage using React Testing Library.
+This project achieves **95% test coverage** using the following tools:
 
-![alt text](image.png)
+- **React Testing Library**: For unit and integration tests.
+- **Snapshot Testing**: To ensure consistent UI rendering.
+- **Playwright**: For end-to-end (E2E) testing with report generation.
+
+![Test Coverage Report](image-1.png)
+
+## Performance and Best Practices
+
+The project adheres to best practices and achieves the following performance metrics:
+
+- **SEO Score**: 100
+- **Best Practices**: 100
+- **Accessibility**: 100
+- **Performance**: 58
+
+![Performance Metrics](image.png)
+
+## Run Test Cases
+
+- **Unit and Integration Tests**:
+  ```bash
+  npm run test
+
+- **Playwright Tests**:
+  ```bash
+  npm run playwright

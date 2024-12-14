@@ -1,9 +1,18 @@
 import { render, screen } from "@testing-library/react"
 import { MemoryRouter } from "react-router-dom"
 import Footer from "../Footer"
-import { test, expect } from "vitest"
+import { it, expect } from "vitest"
 
-test("renders Footer component", () => {
+it("matches snapshot", () => {
+  const { asFragment } = render(
+    <MemoryRouter>
+      <Footer />
+    </MemoryRouter>
+  )
+  expect(asFragment()).toMatchSnapshot()
+})
+
+it("renders Footer component", () => {
   render(
     <MemoryRouter>
       <Footer />

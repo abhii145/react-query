@@ -6,7 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import cartReducer from "../../store/cartSlice"
 import ProductDetails from "../ProductDetails"
 import { toast } from "react-toastify"
-import { expect, describe, vi, beforeEach, test } from "vitest"
+import { expect, describe, vi, beforeEach, it } from "vitest"
 
 vi.mock("react-toastify", () => ({
   toast: {
@@ -39,7 +39,22 @@ describe("ProductDetails", () => {
     })
   })
 
-  test("renders product details correctly", async () => {
+    it("matches snapshot", () => {
+      const { asFragment } = render(
+        <Provider store={store}>
+          <QueryClientProvider client={queryClient}>
+            <MemoryRouter initialEntries={["/product/1"]}>
+              <Routes>
+                <Route path="/product/:id" element={<ProductDetails />} />
+              </Routes>
+            </MemoryRouter>
+          </QueryClientProvider>
+        </Provider>
+      )
+      expect(asFragment()).toMatchSnapshot()
+    })
+
+  it("renders product details correctly", async () => {
     render(
       <Provider store={store}>
         <QueryClientProvider client={queryClient}>
@@ -58,7 +73,7 @@ describe("ProductDetails", () => {
     }, { timeout: 5000 })
   })
 
-  test("handles add to cart", async () => {
+  it("handles add to cart", async () => {
     render(
       <Provider store={store}>
         <QueryClientProvider client={queryClient}>
@@ -136,4 +151,6 @@ describe("ProductDetails", () => {
       autoClose: 800,
     })
   })
+
+
 })

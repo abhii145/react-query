@@ -5,7 +5,7 @@ import { MemoryRouter } from "react-router-dom"
 import favoritesReducer from "../../store/favoritesSlice"
 import FavoriteItems from "../FavoriteItems"
 import { toast } from "react-toastify"
-import { expect, describe, vi, beforeEach, test } from "vitest"
+import { expect, describe, vi, beforeEach, it } from "vitest"
 
 vi.mock("react-toastify", () => ({
   toast: {
@@ -44,7 +44,19 @@ describe("FavoriteItems", () => {
     })
   })
 
-  test("renders empty favorites message when there are no favorite items", () => {
+
+    it("matches snapshot", () => {
+      const { asFragment } = render(
+        <Provider store={store}>
+          <MemoryRouter>
+            <FavoriteItems />
+          </MemoryRouter>
+        </Provider>
+      )
+      expect(asFragment()).toMatchSnapshot()
+    })
+
+  it("renders empty favorites message when there are no favorite items", () => {
     store = createMockStore({
       favorites: { favorites: [] },
     })
@@ -60,7 +72,7 @@ describe("FavoriteItems", () => {
     expect(screen.getByText("Your Favorites is Empty")).toBeInTheDocument()
   })
 
-  test("renders favorite items correctly", () => {
+  it("renders favorite items correctly", () => {
     render(
       <Provider store={store}>
         <MemoryRouter>
@@ -73,7 +85,7 @@ describe("FavoriteItems", () => {
     expect(screen.getByText("$20")).toBeInTheDocument()
   })
 
-  test("handles remove from favorites", () => {
+  it("handles remove from favorites", () => {
     render(
       <Provider store={store}>
         <MemoryRouter>
@@ -99,4 +111,6 @@ describe("FavoriteItems", () => {
       autoClose: 800,
     })
   })
+
+
 })

@@ -5,6 +5,18 @@ import { it, expect, describe, vi } from "vitest"
 describe("PaginationControls", () => {
   const onMove = vi.fn()
 
+  it("matches snapshot", () => {
+    const { asFragment } = render(
+      <PaginationControls
+        disablePrevious={false}
+        disableNext={false}
+        onMove={onMove}
+        limit={10}
+      />
+    )
+    expect(asFragment()).toMatchSnapshot()
+  })
+
   it("disables previous button when disablePrevious is true", () => {
     render(
       <PaginationControls

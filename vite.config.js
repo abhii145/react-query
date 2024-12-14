@@ -37,6 +37,7 @@ export default defineConfig({
         "src/pages/ProductListingPage.jsx",
         "src/App.jsx",
         "src/main.jsx",
+        "playwright/playwright.spec.js",
       ],
       threshold: {
         global: {

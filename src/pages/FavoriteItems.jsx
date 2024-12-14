@@ -18,7 +18,7 @@ const FavoriteItems = () => {
   }
 
   return (
-    <div className="bg-grey-50">
+    <div className="bg-gray-100">
       <div className="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-12 lg:max-w-7xl lg:px-8">
         <h1 className="text-3xl font-extrabold text-gray-900 mb-6">
           Your Favorites
@@ -35,7 +35,7 @@ const FavoriteItems = () => {
             {favoriteItems.map((item) => (
               <div
                 key={item.id}
-                className="group relative bg-gray-200 rounded-md overflow-hidden"
+                className="group relative bg-gray-300 rounded-md overflow-hidden"
               >
                 {/* Product Image */}
                 <img
@@ -45,7 +45,7 @@ const FavoriteItems = () => {
                   className="aspect-square w-full object-cover group-hover:opacity-75"
                 />
                 {/* Title and Price Overlay */}
-                <div className="absolute inset-x-0 bottom-0 bg-black/60 text-white p-4">
+                <div className="absolute inset-x-0 bottom-0 bg-black/70 text-white p-4">
                   <div className="flex justify-between items-center">
                     <h3 className="text-sm font-bold">
                       <Link to={`/product/${item.id}`}>
@@ -61,7 +61,7 @@ const FavoriteItems = () => {
                 <div className="absolute top-2 right-2">
                   <button
                     onClick={() => handleRemoveFromFavorites(item)}
-                    className="p-2 bg-red-100 rounded-full hover:bg-red-200"
+                    className="p-2 bg-red-200 rounded-full hover:bg-red-300"
                     data-testid={`delete-${item.id}`}
                   >
                     <FaTrash size={16} color="red" />

@@ -40,4 +40,13 @@ describe("ProductCard", () => {
     expect(screen.getByText("Category 1")).toBeInTheDocument()
     expect(screen.getByText("100")).toBeInTheDocument()
   })
+
+  it("matches snapshot", () => {
+    const { asFragment } = render(
+      <Router>
+        <ProductCard products={products} />
+      </Router>
+    )
+    expect(asFragment()).toMatchSnapshot()
+  })
 })

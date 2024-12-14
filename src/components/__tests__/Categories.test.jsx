@@ -1,16 +1,28 @@
-// src/components/__tests__/Categories.test.jsx
 import { render, screen } from "@testing-library/react"
 import Categories from "../Categories"
 import { useCategories } from "../../hooks/useProducts"
 import { BrowserRouter as Router } from "react-router-dom"
 import { it, expect, describe, vi } from "vitest"
 
-// Mock the useCategories hook
 vi.mock("../../hooks/useProducts", () => ({
   useCategories: vi.fn(),
 }))
 
 describe("Categories", () => {
+  it("matches snapshot", () => {
+    const categories = [
+      { slug: "electronics", name: "Electronics" },
+      { slug: "fashion", name: "Fashion" },
+    ]
+    useCategories.mockReturnValue({ data: categories, isLoading: false })
+    const { asFragment } = render(
+      <Router>
+        <Categories />
+      </Router>
+    )
+    expect(asFragment()).toMatchSnapshot()
+  })
+
   it("renders categories correctly", () => {
     const categories = [
       { slug: "electronics", name: "Electronics" },

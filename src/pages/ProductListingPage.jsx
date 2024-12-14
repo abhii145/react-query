@@ -1,15 +1,12 @@
 import { useSearchParams } from "react-router"
-import { useCallback } from "react"
-import { debounce } from "lodash"
 import { useCategories, useProducts } from "../hooks/useProducts"
 import { SORT_OPTIONS, DEFAULT_SEARCH_PARAMS } from "../constants"
-import Loading from "../components/Loading" // Import Loading component
+import Loading from "../components/Loading"
 import {
   CategoryFilter,
   NotFound,
   PaginationControls,
   ProductCard,
-  SearchBar,
   SortFilter,
 } from "../components"
 
@@ -50,21 +47,6 @@ const ProductListingPage = () => {
     console.log("Selected category:", e.target.value)
   }
 
-  const handleSearchChange = useCallback(
-    (value) => {
-      debounce(() => {
-        setSearchParam((prev) => {
-          prev.delete("category")
-          prev.set("search", value)
-          prev.set("skip", 0)
-          return prev
-        })
-        console.log("Search:", value)
-      }, 500)()
-    },
-    [setSearchParam]
-  )
-
   const handleMove = (moveCount) => {
     setSearchParam((prev) => {
       prev.set("skip", Math.max(skip + moveCount, 0))
@@ -95,10 +77,7 @@ const ProductListingPage = () => {
   return (
     <div className="bg-gray-50 min-h-screen p-6">
       <div className="max-w-7xl mx-auto bg-white rounded-lg shadow p-6">
-        <SearchBar
-          searchQuery={searchQuery}
-          onSearchChange={handleSearchChange}
-        />
+        {/* Removed SearchBar */}
         {products.length > 0 && (
           <>
             <div className="flex flex-col sm:flex-row justify-between gap-4 items-center mb-6">

@@ -5,6 +5,13 @@ import { it, expect, describe, vi } from "vitest"
 describe("SearchBar", () => {
   const onSearchChange = vi.fn()
 
+  it("matches snapshot", () => {
+    const { asFragment } = render(
+      <SearchBar searchQuery="test" onSearchChange={onSearchChange} />
+    )
+    expect(asFragment()).toMatchSnapshot()
+  })
+
   it("renders input with initial value", () => {
     render(<SearchBar searchQuery="test" onSearchChange={onSearchChange} />)
     const input = screen.getByPlaceholderText("Search products...")

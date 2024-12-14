@@ -6,7 +6,7 @@ import cartReducer from "../../store/cartSlice"
 import favoritesReducer from "../../store/favoritesSlice"
 import Cart from "../Cart"
 import { toast } from "react-toastify"
-import { expect, describe, vi, beforeEach, test } from "vitest"
+import { expect, describe, vi, beforeEach, it } from "vitest"
 
 vi.mock("react-toastify", () => ({
   toast: {
@@ -51,7 +51,18 @@ describe("Cart", () => {
     })
   })
 
-  test("renders empty cart message when cart is empty", () => {
+  it("matches snapshot", () => {
+    const { asFragment } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <Cart />
+        </MemoryRouter>
+      </Provider>
+    )
+    expect(asFragment()).toMatchSnapshot()
+  })
+
+  it("renders empty cart message when cart is empty", () => {
     store = createMockStore({
       cart: { items: [] },
       favorites: { favorites: [] },
@@ -68,7 +79,7 @@ describe("Cart", () => {
     expect(screen.getByText("Your Cart is Empty")).toBeInTheDocument()
   })
 
-  test("renders cart items correctly", () => {
+  it("renders cart items correctly", () => {
     render(
       <Provider store={store}>
         <MemoryRouter>
@@ -82,7 +93,7 @@ describe("Cart", () => {
     expect(screen.queryAllByText("$10.00").length).toBeGreaterThan(0)
   })
 
-  test("handles increase quantity", () => {
+  it("handles increase quantity", () => {
     render(
       <Provider store={store}>
         <MemoryRouter>
@@ -99,7 +110,7 @@ describe("Cart", () => {
     })
   })
 
-  test("handles decrease quantity", () => {
+  it("handles decrease quantity", () => {
     render(
       <Provider store={store}>
         <MemoryRouter>
@@ -116,7 +127,7 @@ describe("Cart", () => {
     })
   })
 
-  test("handles remove from cart", () => {
+  it("handles remove from cart", () => {
     render(
       <Provider store={store}>
         <MemoryRouter>
@@ -134,7 +145,7 @@ describe("Cart", () => {
     })
   })
 
-  test("handles toggle favorite", () => {
+  it("handles toggle favorite", () => {
     render(
       <Provider store={store}>
         <MemoryRouter>

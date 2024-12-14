@@ -9,10 +9,10 @@ const PaginationControls = ({
   <div className="flex justify-between items-center mt-8">
     <button
       onClick={() => onMove(-limit)}
-      className={`px-4 py-2 rounded-lg text-white ${
+      className={`px-4 py-2 rounded-lg ${
         disablePrevious
-          ? "bg-gray-400 cursor-not-allowed"
-          : "bg-blue-500 hover:bg-blue-600"
+          ? "bg-gray-400 text-white cursor-not-allowed"
+          : "bg-blue-500 text-black hover:bg-blue-600"
       }`}
       disabled={disablePrevious}
     >
@@ -20,10 +20,10 @@ const PaginationControls = ({
     </button>
     <button
       onClick={() => onMove(limit)}
-      className={`px-4 py-2 rounded-lg text-white ${
+      className={`px-4 py-2 rounded-lg ${
         disableNext
-          ? "bg-gray-400 cursor-not-allowed"
-          : "bg-blue-500 hover:bg-blue-600"
+          ? "bg-gray-400 text-white cursor-not-allowed"
+          : "bg-blue-500 text-black hover:bg-blue-600"
       }`}
       disabled={disableNext}
     >

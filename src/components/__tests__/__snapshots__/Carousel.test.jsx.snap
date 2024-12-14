@@ -1,0 +1,67 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Carousel > matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    aria-live="polite"
+    class="relative group"
+    role="region"
+  >
+    <div
+      class="overflow-hidden"
+    >
+      <div
+        class="flex transition-transform duration-500"
+        style="transform: translateX(-0%);"
+      >
+        <div
+          class="flex-none w-full"
+        >
+          <img
+            alt="carousel-image-0"
+            class="w-full h-[300px] lg:h-[400px] object-contain rounded-lg shadow-lg"
+            loading="eager"
+            src="image1.jpg"
+          />
+        </div>
+        <div
+          class="flex-none w-full"
+        >
+          <img
+            alt="carousel-image-1"
+            class="w-full h-[300px] lg:h-[400px] object-contain rounded-lg shadow-lg"
+            loading="lazy"
+            src="image2.jpg"
+          />
+        </div>
+        <div
+          class="flex-none w-full"
+        >
+          <img
+            alt="carousel-image-2"
+            class="w-full h-[300px] lg:h-[400px] object-contain rounded-lg shadow-lg"
+            loading="lazy"
+            src="image3.jpg"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="absolute top-1/2 left-0 right-0 flex justify-between transform -translate-y-1/2 px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+    >
+      <button
+        aria-label="Previous Image"
+        class="bg-black text-white p-3 rounded-full shadow-lg hover:bg-gray-600 opacity-70 hover:opacity-100 transition-all"
+      >
+        ←
+      </button>
+      <button
+        aria-label="Next Image"
+        class="bg-black text-white p-3 rounded-full shadow-lg hover:bg-gray-600 opacity-70 hover:opacity-100 transition-all"
+      >
+        →
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
