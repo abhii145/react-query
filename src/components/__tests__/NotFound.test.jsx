@@ -1,9 +1,18 @@
 import { render, screen } from "@testing-library/react"
 import { MemoryRouter } from "react-router-dom"
 import NotFound from "../NotFound"
-import { test, expect } from "vitest"
+import { it, expect } from "vitest"
 
-test("renders NotFound component", () => {
+it("matches snapshot", () => {
+  const { asFragment } = render(
+    <MemoryRouter>
+      <NotFound />
+    </MemoryRouter>
+  )
+  expect(asFragment()).toMatchSnapshot()
+})
+
+it("renders NotFound component", () => {
   render(
     <MemoryRouter>
       <NotFound />

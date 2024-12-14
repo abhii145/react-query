@@ -6,8 +6,10 @@ import {
   ProductDetails,
 } from "../index"
 
+import { it, expect, describe } from "vitest"
+
 describe("Component Imports", () => {
-  test("should import all components correctly", () => {
+  it("should import all components correctly", () => {
     expect(Cart).toBeDefined()
     expect(FavoriteItems).toBeDefined()
     expect(ProductListingPage).toBeDefined()

@@ -6,7 +6,6 @@ import {
   Header,
   NotFound,
   PaginationControls,
-  Pagination,
   ProductCard,
   SearchBar,
   SortFilter,
@@ -22,7 +21,6 @@ test("should import all components correctly", () => {
   expect(Header).toBeDefined()
   expect(NotFound).toBeDefined()
   expect(PaginationControls).toBeDefined()
-  expect(Pagination).toBeDefined()
   expect(ProductCard).toBeDefined()
   expect(SearchBar).toBeDefined()
   expect(SortFilter).toBeDefined()

@@ -1,0 +1,242 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Cart > matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="font-sans max-w-[77rem] max-md:max-w-xl mx-auto p-4 bg-grey-50"
+  >
+    <h1
+      class="text-2xl font-extrabold text-gray-800"
+    >
+      Shopping Cart
+    </h1>
+    <div
+      class="grid md:grid-cols-3 gap-4 mt-8"
+    >
+      <div
+        class="md:col-span-2 space-y-4"
+      >
+        <div
+          class="flex gap-4 bg-white px-4 py-6 rounded-md shadow-[0_2px_12px_-3px_rgba(6,81,237,0.3)]"
+        >
+          <div
+            class="flex gap-4"
+          >
+            <div
+              class="w-28 h-28 max-sm:w-24 max-sm:h-24 shrink-0"
+            >
+              <img
+                alt="Product 1"
+                class="w-full h-full object-contain"
+                loading="lazy"
+                src="thumbnail1.jpg"
+              />
+            </div>
+            <div
+              class="flex flex-col gap-4"
+            >
+              <div>
+                <p
+                  class="text-sm font-semibold text-gray-800 mt-2 flex items-center gap-2"
+                >
+                  Product 1
+                </p>
+                <p
+                  class="text-sm font-bold text-gray-500"
+                >
+                  Description 1...
+                </p>
+              </div>
+              <div
+                class="mt-auto flex items-center gap-3"
+              >
+                <button
+                  class="flex items-center justify-center w-5 h-5 bg-gray-400 outline-none rounded-full"
+                  data-testid="decrease-1"
+                >
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 448 512"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"
+                    />
+                  </svg>
+                </button>
+                <span
+                  class="font-bold text-sm leading-[18px]"
+                >
+                  1
+                </span>
+                <button
+                  class="flex items-center justify-center w-5 h-5 bg-gray-400 outline-none rounded-full"
+                  data-testid="increase-1"
+                >
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 448 512"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            class="ml-auto flex flex-col"
+          >
+            <div
+              class="flex items-start gap-4 justify-end"
+            >
+              <svg
+                class="cursor-pointer"
+                color="gray"
+                data-testid="favorite-1"
+                fill="currentColor"
+                height="20"
+                stroke="currentColor"
+                stroke-width="0"
+                style="color: gray;"
+                viewBox="0 0 512 512"
+                width="20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"
+                />
+              </svg>
+              <svg
+                class="cursor-pointer"
+                color="red"
+                data-testid="delete-1"
+                fill="currentColor"
+                height="20"
+                stroke="currentColor"
+                stroke-width="0"
+                style="color: red;"
+                viewBox="0 0 24 24"
+                width="20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 0h24v24H0z"
+                  fill="none"
+                />
+                <path
+                  d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                />
+              </svg>
+            </div>
+            <h3
+              class="text-base font-bold text-gray-800 mt-auto"
+            >
+              $10.00
+            </h3>
+          </div>
+        </div>
+      </div>
+      <div
+        class="bg-white rounded-md px-4 py-6 h-max shadow-[0_2px_12px_-3px_rgba(6,81,237,0.3)]"
+      >
+        <ul
+          class="text-gray-800 space-y-4"
+        >
+          <li
+            class="flex flex-wrap gap-4 text-sm"
+          >
+            Subtotal
+            <span
+              class="ml-auto font-bold"
+            >
+              $10.00
+            </span>
+          </li>
+          <li
+            class="flex flex-wrap gap-4 text-sm"
+          >
+            Shipping
+            <span
+              class="ml-auto font-bold"
+            >
+              $0.00
+            </span>
+          </li>
+          <li
+            class="flex flex-wrap gap-4 text-sm"
+          >
+            Tax
+            <span
+              class="ml-auto font-bold"
+            >
+              $0.00
+            </span>
+          </li>
+          <hr
+            class="border-gray-300"
+          />
+          <li
+            class="flex flex-wrap gap-4 text-sm font-bold"
+          >
+            Total
+            <span
+              class="ml-auto"
+            >
+              $10.00
+            </span>
+          </li>
+        </ul>
+        <div
+          class="mt-8 space-y-2"
+        >
+          <button
+            class="text-sm px-4 py-2.5 w-full font-semibold tracking-wide bg-gray-800 hover:bg-gray-900 text-white rounded-md"
+            type="button"
+          >
+            Buy Now
+          </button>
+          <button
+            class="text-sm px-4 py-2.5 w-full font-semibold tracking-wide bg-transparent hover:bg-gray-100 text-gray-800 border border-gray-300 rounded-md"
+            type="button"
+          >
+            Continue Shopping
+          </button>
+        </div>
+        <div
+          class="mt-4 flex flex-wrap justify-center gap-4"
+        >
+          <img
+            alt="card1"
+            class="w-10 object-contain"
+            loading="lazy"
+            src="https://readymadeui.com/images/master.webp"
+          />
+          <img
+            alt="card2"
+            class="w-10 object-contain"
+            loading="lazy"
+            src="https://readymadeui.com/images/visa.webp"
+          />
+          <img
+            alt="card3"
+            class="w-10 object-contain"
+            loading="lazy"
+            src="https://readymadeui.com/images/american-express.webp"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -31,6 +31,8 @@ export const useCategories = () => {
   return useQuery({
     queryKey: ["categories"],
     queryFn: fetchCategories,
+    placeholderData: keepPreviousData,
+    staleTime: 1000 * 60 * 5,
   })
 }
 

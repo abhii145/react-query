@@ -7,6 +7,13 @@ describe("SortFilter", () => {
   const mockOnSortChange = vi.fn()
   const selectedSort = "Price: Low to High"
 
+  it("matches snapshot", () => {
+    const { asFragment } = render(
+      <SortFilter onSortChange={mockOnSortChange} selectedSort={selectedSort} />
+    )
+    expect(asFragment()).toMatchSnapshot()
+  })
+
   it("renders correctly", () => {
     render(
       <SortFilter onSortChange={mockOnSortChange} selectedSort={selectedSort} />

@@ -1,8 +1,21 @@
 import { render, screen } from "@testing-library/react"
 import { MemoryRouter } from "react-router-dom"
 import EmptyStateCard from "../EmptyStateCard"
+import { it, expect } from "vitest"
 
-test("renders EmptyStateCard component", () => {
+it("matches snapshot", () => {
+  const { asFragment } = render(
+    <MemoryRouter>
+      <EmptyStateCard
+        heading="No items found"
+        subheading="Try adding some items to your cart."
+        buttonLabel="Go to Shop"
+      />
+    </MemoryRouter>
+  )
+  expect(asFragment()).toMatchSnapshot()
+})
+it("renders EmptyStateCard component", () => {
   render(
     <MemoryRouter>
       <EmptyStateCard

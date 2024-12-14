@@ -1,10 +1,29 @@
 import { render, screen } from "@testing-library/react"
 import { MemoryRouter } from "react-router-dom"
 import Header from "../Header"
-import { describe, test, expect } from "vitest"
+import { describe, it, expect, vi } from "vitest"
+
+const mockNavigate = vi.fn()
+
+vi.mock("react-router-dom", async (importOriginal) => {
+  const actual = await importOriginal()
+  return {
+    ...actual,
+    useNavigate: () => mockNavigate,
+  }
+})
 
 describe("Header component", () => {
-  test("renders Header component", () => {
+  it("matches snapshot", () => {
+    const { asFragment } = render(
+      <MemoryRouter>
+        <Header />
+      </MemoryRouter>
+    )
+    expect(asFragment()).toMatchSnapshot()
+  })
+
+  it("renders Header component", () => {
     render(
       <MemoryRouter>
         <Header />
@@ -17,7 +36,7 @@ describe("Header component", () => {
     expect(screen.getByTestId("cart-link")).toBeInTheDocument()
   })
 
-  test("links navigate to correct paths", () => {
+  it("links navigate to correct paths", () => {
     render(
       <MemoryRouter>
         <Header />
@@ -25,7 +44,10 @@ describe("Header component", () => {
     )
 
     expect(screen.getByTestId("logo-link")).toHaveAttribute("href", "/")
-    expect(screen.getByTestId("favourite-link")).toHaveAttribute("href", "/favourite")
+    expect(screen.getByTestId("favourite-link")).toHaveAttribute(
+      "href",
+      "/favourite"
+    )
     expect(screen.getByTestId("cart-link")).toHaveAttribute("href", "/cart")
   })
 })

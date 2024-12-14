@@ -1,0 +1,20 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`PaginationControls > matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="flex justify-between items-center mt-8"
+  >
+    <button
+      class="px-4 py-2 rounded-lg bg-blue-500 text-black hover:bg-blue-600"
+    >
+      Previous
+    </button>
+    <button
+      class="px-4 py-2 rounded-lg bg-blue-500 text-black hover:bg-blue-600"
+    >
+      Next
+    </button>
+  </div>
+</DocumentFragment>
+`;
