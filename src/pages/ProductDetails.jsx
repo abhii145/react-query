@@ -109,12 +109,18 @@ const ProductDetails = () => {
 
           {/* Product Details */}
           <div className="flex-1 space-y-6">
-            <h1 className="text-2xl font-bold text-gray-800" data-testid="product-title">
+            <h1
+              className="text-2xl font-bold text-gray-800"
+              data-testid="product-title"
+            >
               {product.title}
             </h1>
             <p className="text-gray-600">{product.description}</p>
-            <p className="text-lg font-semibold text-gray-800" data-testid="product-price">
-              Price: ${product.price}
+            <p
+              className="text-lg font-semibold text-gray-800"
+              data-testid="product-price"
+            >
+              Price: ₹{product.price}
             </p>
             <p className="text-gray-600">
               <span className="font-medium">Category:</span> {product.category}

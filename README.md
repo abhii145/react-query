@@ -44,6 +44,13 @@ The project adheres to best practices and achieves the following performance met
 <img width="784" alt="image" src="https://github.com/user-attachments/assets/af9a0829-bb7e-4201-bbea-67b40a9e116e" />
 
 
+## Test Card for Indian Payments
+
+| Card Network | Card Number        | CVV         | Expiry Date      |
+|--------------|--------------------|-------------|------------------|
+| Mastercard   | 5267 3181 8797 5449| Random CVV  | Any future date  |
+| Visa         | 4111 1111 1111 1111| Random CVV  | Any future date  |
+
 ## Run Test Cases
 
 - **Unit and Integration Tests**:

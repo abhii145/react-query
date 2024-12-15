@@ -53,7 +53,7 @@ const FavoriteItems = () => {
                         {item.name}
                       </Link>
                     </h3>
-                    <p className="text-sm font-bold">${item.price}</p>
+                    <p className="text-sm font-bold">₹{item.price}</p>
                   </div>
                   <p className="mt-1 text-sm">{item.title}</p>
                 </div>
