@@ -179,7 +179,7 @@ const Cart = () => {
               type="button"
               className="text-sm px-4 py-2.5 w-full font-semibold tracking-wide bg-transparent hover:bg-gray-100 text-gray-800 border border-gray-300 rounded-md"
             >
-              Continue Shopping
+            <Link to="/products">Continue Shopping</Link>
             </button>
           </div>
 
