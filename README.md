@@ -1,62 +1,62 @@
-# E-commerce Application
+# E-commerce Application  
 
-This is a modern e-commerce application built with React, React Router DOM, React Query, Redux Toolkit, and includes features like pagination, search, and filter.
+A cutting-edge e-commerce platform built with modern technologies, delivering seamless performance and exceptional user experiences.  
 
-## Technologies Used
+## Technologies  
 
-- **React**: Used for creating UI interfaces.
-- **React Router DOM**: Used for navigation between components.
-- **React Query**: Hooks for fetching, caching, and updating asynchronous data in React.
-- **Redux Toolkit**: Used for state management.
-- **Pagination**: Implemented to navigate through product listings.
-- **Search**: Allows users to search for products.
-- **Filter**: Enables users to filter products based on categories and other criteria.
+- **React**: Efficient UI rendering for dynamic interfaces.  
+- **React Router DOM**: Smooth navigation between application pages.  
+- **React Query**: Advanced data fetching, caching, and synchronization.  
+- **Redux Toolkit**: Streamlined state management for scalable applications.  
+- **Pagination**: Effortless browsing across product collections.  
+- **Search & Filters**: Quick and precise product discovery.  
 
-## Features
+## Key Features  
 
-- **Product Listing**: Browse through a list of products with pagination.
-- **Product Search**: Search for products using keywords.
-- **Product Filter**: Filter products by categories, price, and other attributes.
-- **Product Details**: View detailed information about a product.
-- **Cart Management**: Add, remove, and manage products in the shopping cart.
-- **Favorites**: Mark products as favorites for quick access.
+- **Product Catalog**: Browse and explore products with intuitive navigation and advanced search.  
+- **Filters**: Refine results based on categories, price ranges, and more.  
+- **Detailed Product Pages**: View comprehensive product descriptions and reviews.  
+- **Cart Management**: Add, remove, or edit items effortlessly.  
+- **Favorites**: Save products for future reference.  
+- **Order History**: Track and manage your previous purchases from a dedicated order page.  
+- **Payment Integration**: Secure and reliable payment processing powered by Razorpay.  
 
-## Test Coverage
+## Test Coverage  
 
-This project achieves **95% test coverage** using the following tools:
+Achieves **95% test coverage** with:  
 
-- **React Testing Library**: For unit and integration tests.
-- **Snapshot Testing**: To ensure consistent UI rendering.
-- **Playwright**: For end-to-end (E2E) testing with report generation.
+- **React Testing Library**: Ensuring robust component behavior.  
+- **Snapshot Testing**: Verifying consistent UI.  
+- **Playwright**: End-to-end testing with insightful reports.  
 
-<img width="1223" alt="image" src="https://github.com/user-attachments/assets/6950f24a-bb8b-42c0-b9f0-dccdb8af24e8" />
+![Test Coverage Screenshot](https://github.com/user-attachments/assets/6950f24a-bb8b-42c0-b9f0-dccdb8af24e8)  
 
+## Performance Highlights  
 
-## Performance and Best Practices
+This application is optimized for performance and accessibility:  
 
-The project adheres to best practices and achieves the following performance metrics:
+- **SEO**: 100  
+- **Best Practices**: 100  
+- **Accessibility**: 100  
+- **Performance**: 74  
 
-- **SEO Score**: 100
-- **Best Practices**: 100
-- **Accessibility**: 100
-- **Performance**: 74
+![Performance Metrics Screenshot](https://github.com/user-attachments/assets/af9a0829-bb7e-4201-bbea-67b40a9e116e)  
 
-<img width="784" alt="image" src="https://github.com/user-attachments/assets/af9a0829-bb7e-4201-bbea-67b40a9e116e" />
+## Testing Indian Payment Gateways  
 
+Use the following test cards for verifying Razorpay integration:  
 
-## Test Card for Indian Payments
+| Card Network | Card Number         | CVV          | Expiry Date       |  
+|--------------|---------------------|--------------|-------------------|  
+| Mastercard   | 5267 3181 8797 5449 | Any 3 digits | Any future date   |  
+| Visa         | 4111 1111 1111 1111 | Any 3 digits | Any future date   |  
 
-| Card Network | Card Number        | CVV         | Expiry Date      |
-|--------------|--------------------|-------------|------------------|
-| Mastercard   | 5267 3181 8797 5449| Random CVV  | Any future date  |
-| Visa         | 4111 1111 1111 1111| Random CVV  | Any future date  |
+## Running Tests  
 
-## Run Test Cases
-
-- **Unit and Integration Tests**:
-  ```bash
-  npm run test
+- **Unit and Integration Tests**:  
+  ```bash  
+  npm run test  
 
 - **Playwright Tests**:
-  ```bash
+ ```bash 
   npm run playwright
