@@ -29,7 +29,8 @@ Achieves **95% test coverage** with:
 - **Snapshot Testing**: Verifying consistent UI.  
 - **Playwright**: End-to-end testing with insightful reports.  
 
-![Test Coverage Screenshot](https://github.com/user-attachments/assets/6950f24a-bb8b-42c0-b9f0-dccdb8af24e8)  
+<img width="1728" alt="image" src="https://github.com/user-attachments/assets/81788fff-279e-41aa-baa2-bba3c41ec6a5" />
+
 
 ## Performance Highlights  
 
