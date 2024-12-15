@@ -1,4 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit"
+import { configureStore, combineReducers } from "@reduxjs/toolkit"
 import {
   persistStore,
   persistReducer,
@@ -12,19 +12,23 @@ import {
 import storage from "redux-persist/lib/storage"
 import counterReducer from "./cartSlice"
 import favoritesReducer from "./favoritesSlice"
+import orderReducer from "./orderSlice"
+
+const rootReducer = combineReducers({
+  cart: counterReducer,
+  favorites: favoritesReducer,
+  order: orderReducer,
+})
 
 const persistConfig = {
   key: "root",
   storage,
 }
 
-const rootReducer = {
-  cart: persistReducer(persistConfig, counterReducer),
-  favorites: persistReducer(persistConfig, favoritesReducer),
-}
+const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 export const store = configureStore({
-  reducer: rootReducer,
+  reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {

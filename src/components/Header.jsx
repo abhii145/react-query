@@ -4,6 +4,7 @@ import { MdOutlineFavoriteBorder } from "react-icons/md"
 import { useState, useCallback, useEffect } from "react"
 import { debounce } from "lodash"
 import { useSelector } from "react-redux"
+import { FaBox } from "react-icons/fa6"
 
 const Header = () => {
   const navigate = useNavigate()
@@ -52,6 +53,16 @@ const Header = () => {
         >
           <MdOutlineFavoriteBorder className="text-2xl cursor-pointer fill-red-400" />
         </Link>
+
+        <Link
+          to="/order"
+          className="text-xl font-bold"
+          data-testid="order-link"
+          aria-label="Order"
+        >
+          <FaBox className="text-2xl cursor-pointer fill-green-400" />
+        </Link>
+
         <div className="relative">
           <Link to="/cart" data-testid="cart-link" aria-label="Cart">
             <AiOutlineShoppingCart className="text-2xl cursor-pointer fill-grey-100" />

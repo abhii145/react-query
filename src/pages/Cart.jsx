@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
 import {
+  clearCart,
   decreaseQuantity,
   increaseQuantity,
   removeFromCart,
@@ -10,14 +11,16 @@ import { toggleFavorite } from "../store/favoritesSlice"
 import EmptyStateCard from "../components/EmptyStateCard"
 import { IoCartOutline } from "react-icons/io5"
 import { toast } from "react-toastify"
-import { Link } from "react-router-dom"
-import { useRazorpay, RazorpayOrderOptions } from "react-razorpay"
+import { Link, useNavigate } from "react-router-dom"
+import { useRazorpay } from "react-razorpay"
+import { addOrder } from "../store/orderSlice"
 
 const Cart = () => {
   const dispatch = useDispatch()
   const cartItems = useSelector((state) => state.cart.items)
   const favoriteItems = useSelector((state) => state.favorites.favorites)
-  const { error, isLoading, Razorpay } = useRazorpay()
+  const { Razorpay } = useRazorpay()
+  const navigate = useNavigate()
 
   const handleIncrease = (productId) => {
     dispatch(increaseQuantity(productId))
@@ -58,14 +61,7 @@ const Cart = () => {
   }
 
   const handleBuyNow = async () => {
-    const cartDetails = cartItems.map((item) => ({
-      title: item.title,
-      thumbnail: item.thumbnail,
-      quantity: item.quantity,
-      price: item.price,
-    }))
-
-    const totalAmount = calculateTotal() * 100 // Convert to paise
+    const totalAmount = calculateTotal() * 100
 
     const options = {
       key: import.meta.env.VITE_RAZORPAY_KEY,
@@ -75,7 +71,20 @@ const Cart = () => {
       description: "Test Transaction",
       handler: (response) => {
         console.log(response)
+
+        dispatch(
+          addOrder({
+            id: new Date().toISOString(),
+            items: cartItems,
+            total: calculateTotal(),
+            date: new Date().toLocaleString(),
+          })
+        )
+
+        dispatch(clearCart())
+
         toast.success("Payment Successful!")
+        navigate("/order")
       },
       prefill: {
         name: "Abhishek Yadav",
@@ -112,7 +121,7 @@ const Cart = () => {
         {/* Cart Items */}
         <div className="md:col-span-2 space-y-4">
           {cartItems?.map((item) => {
-            const isFavorite = favoriteItems.some(
+            const isFavorite = favoriteItems?.some(
               (favorite) => favorite.id === item.id
             )
             return (
