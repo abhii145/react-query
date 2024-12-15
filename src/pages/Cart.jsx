@@ -12,14 +12,12 @@ import EmptyStateCard from "../components/EmptyStateCard"
 import { IoCartOutline } from "react-icons/io5"
 import { toast } from "react-toastify"
 import { Link, useNavigate } from "react-router-dom"
-import { useRazorpay } from "react-razorpay"
 import { addOrder } from "../store/orderSlice"
 
 const Cart = () => {
   const dispatch = useDispatch()
   const cartItems = useSelector((state) => state.cart.items)
   const favoriteItems = useSelector((state) => state.favorites.favorites)
-  const { Razorpay } = useRazorpay()
   const navigate = useNavigate()
 
   const handleIncrease = (productId) => {
@@ -99,8 +97,16 @@ const Cart = () => {
       },
     }
 
-    const razorpayInstance = new Razorpay(options)
-    razorpayInstance.open()
+    const script = document.createElement("script")
+    script.src = "https://checkout.razorpay.com/v1/checkout.js"
+    script.onload = () => {
+      const razorpayInstance = new window.Razorpay(options)
+      razorpayInstance.open()
+    }
+    script.onerror = () => {
+      toast.error("Failed to load Razorpay SDK")
+    }
+    document.body.appendChild(script)
   }
 
   if (cartItems.length === 0) {
