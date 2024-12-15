@@ -3,11 +3,14 @@ import { AiOutlineShoppingCart } from "react-icons/ai"
 import { MdOutlineFavoriteBorder } from "react-icons/md"
 import { useState, useCallback, useEffect } from "react"
 import { debounce } from "lodash"
+import { useSelector } from "react-redux"
 
 const Header = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const [searchQuery, setSearchQuery] = useState("")
+  const cartItems = useSelector((state) => state.cart.items)
+  const cartItemCount = cartItems?.length
 
   const handleSearchChange = useCallback(
     debounce((value) => {
@@ -41,12 +44,24 @@ const Header = () => {
           placeholder="Search products..."
           className="p-2 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
         />
-        <Link to="/favourite" className="text-xl font-bold" data-testid="favourite-link" aria-label="Favourite">
+        <Link
+          to="/favourite"
+          className="text-xl font-bold"
+          data-testid="favourite-link"
+          aria-label="Favourite"
+        >
           <MdOutlineFavoriteBorder className="text-2xl cursor-pointer fill-red-400" />
         </Link>
-        <Link to="/cart" data-testid="cart-link" aria-label="Cart">
-          <AiOutlineShoppingCart className="text-2xl cursor-pointer fill-grey-100" />
-        </Link>
+        <div className="relative">
+          <Link to="/cart" data-testid="cart-link" aria-label="Cart">
+            <AiOutlineShoppingCart className="text-2xl cursor-pointer fill-grey-100" />
+            {cartItemCount > 0 && (
+              <span className="bg-red-500 text-white text-xs absolute top-0 right-0 rounded-full w-4 h-4 flex items-center justify-center transform translate-x-1/2 -translate-y-1/2">
+                {cartItemCount}
+              </span>
+            )}
+          </Link>
+        </div>
       </div>
     </header>
   )
