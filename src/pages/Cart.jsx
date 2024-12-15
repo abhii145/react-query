@@ -10,6 +10,7 @@ import { toggleFavorite } from "../store/favoritesSlice"
 import EmptyStateCard from "../components/EmptyStateCard"
 import { IoCartOutline } from "react-icons/io5"
 import { toast } from "react-toastify"
+import { Link } from "react-router-dom"
 
 const Cart = () => {
   const dispatch = useDispatch()
@@ -179,7 +180,7 @@ const Cart = () => {
               type="button"
               className="text-sm px-4 py-2.5 w-full font-semibold tracking-wide bg-transparent hover:bg-gray-100 text-gray-800 border border-gray-300 rounded-md"
             >
-            <Link to="/products">Continue Shopping</Link>
+              <Link to="/products">Continue Shopping</Link>
             </button>
           </div>
 
