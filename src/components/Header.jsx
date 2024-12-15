@@ -33,21 +33,21 @@ const Header = () => {
   }, [location]);
 
   return (
-    <header className="bg-white shadow p-4 flex flex-wrap justify-between items-center">
-      <Link to="/" className="text-xl font-bold mb-2 sm:mb-0" data-testid="logo-link">
+    <header className="bg-white shadow p-4 flex justify-between items-center space-x-4">
+      <Link to="/" className="text-xl font-bold" data-testid="logo-link">
         Logo
       </Link>
-      <div className="flex flex-wrap space-x-4 items-center">
+      <div className="flex flex-grow items-center space-x-4">
         <input
           type="text"
           value={searchQuery}
           onChange={onSearchInputChange}
           placeholder="Search products..."
-          className="p-2 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none w-full sm:w-auto"
+          className="flex-grow p-2 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
         />
         <Link
           to="/favourite"
-          className="text-xl font-bold"
+          className="text-xl"
           data-testid="favourite-link"
           aria-label="Favourite"
         >
@@ -55,7 +55,7 @@ const Header = () => {
         </Link>
         <Link
           to="/orders"
-          className="text-xl font-bold"
+          className="text-xl"
           data-testid="order-link"
           aria-label="Order"
         >
