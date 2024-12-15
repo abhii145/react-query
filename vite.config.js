@@ -18,6 +18,7 @@ export default defineConfig({
       "src/components/Pagination.jsx",
       "src/pages/LandingPage.jsx",
       "src/pages/ProductListingPage.jsx",
+      "playwright/**/*.spec.js", // Exclude Playwright test files
     ],
     coverage: {
       enabled: true, // Enable coverage reporting
