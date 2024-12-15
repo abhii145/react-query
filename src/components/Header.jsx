@@ -33,11 +33,14 @@ const Header = () => {
   }, [location]);
 
   return (
-    <header className="bg-white shadow p-4 flex justify-between items-center space-x-4">
-      <Link to="/" className="text-xl font-bold" data-testid="logo-link">
+    <header className="bg-white shadow p-4 flex items-center justify-between w-full overflow-hidden">
+      {/* Logo Section */}
+      <Link to="/" className="text-xl font-bold whitespace-nowrap" data-testid="logo-link">
         Logo
       </Link>
-      <div className="flex flex-grow items-center space-x-4">
+
+      {/* Search Bar and Icons */}
+      <div className="flex items-center space-x-4 w-full max-w-[calc(100%-100px)]">
         <input
           type="text"
           value={searchQuery}
