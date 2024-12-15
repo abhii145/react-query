@@ -23,7 +23,7 @@ const FavoriteItems = () => {
         <h1 className="text-3xl font-extrabold text-gray-900 mb-6">
           Your Favorites
         </h1>
-        {favoriteItems.length === 0 ? (
+        {favoriteItems?.length === 0 ? (
           <EmptyStateCard
             icon={FaHeart}
             heading="Your Favorites is Empty"
@@ -32,7 +32,7 @@ const FavoriteItems = () => {
           />
         ) : (
           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-            {favoriteItems.map((item) => (
+            {favoriteItems?.map((item) => (
               <div
                 key={item.id}
                 className="group relative bg-gray-300 rounded-md overflow-hidden"

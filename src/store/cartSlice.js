@@ -1,4 +1,3 @@
-// src/features/cartSlice.js
 import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
@@ -13,7 +12,7 @@ const cartSlice = createSlice({
       const product = action.payload
       const existingProduct = state.items.find((item) => item.id === product.id)
       if (existingProduct) {
-        existingProduct.quantity += 1 // Increase quantity if product already exists
+        existingProduct.quantity += 1
       } else {
         state.items.push({ ...product, quantity: 1 })
       }
