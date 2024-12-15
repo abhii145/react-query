@@ -2,13 +2,12 @@ import { useSelector } from "react-redux"
 
 const Orders = () => {
   const orders = useSelector((state) => state.order.orders)
-  console.log(orders)
 
-  if (orders.length === 0) {
+  if (!orders || orders.length === 0) {
     return (
-      <div className="text-center py-16">
-        <h1 className="text-2xl font-bold text-gray-700">No Orders Found</h1>
-        <p className="text-gray-500 mt-2">
+      <div className="flex flex-col items-center justify-center py-16">
+        <h1 className="text-3xl font-bold text-gray-800">No Orders Found</h1>
+        <p className="text-gray-500 mt-2 text-lg">
           Your orders will appear here after a successful purchase.
         </p>
       </div>
@@ -16,47 +15,59 @@ const Orders = () => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto p-4">
-      <h1 className="text-2xl font-extrabold text-gray-800 mb-4">
+    <div className="max-w-5xl mx-auto px-6 py-10">
+      <h1 className="text-3xl font-extrabold text-gray-900 mb-6">
         Your Orders
       </h1>
-      <div className="space-y-6">
+      <div className="space-y-8">
         {orders.map((order) => (
           <div
             key={order.id}
-            className="p-4 bg-white rounded-md shadow-md space-y-4"
+            className="p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
           >
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center mb-4">
               <h2 className="text-lg font-bold text-gray-800">
                 Order #{order.id}
               </h2>
               <p className="text-sm text-gray-500">{order.date}</p>
             </div>
-            <ul className="space-y-2">
+            <ul className="space-y-4">
               {order.items.map((item) => (
                 <li
                   key={item.id}
-                  className="flex justify-between items-center text-sm text-gray-700"
+                  className="flex items-center gap-4 border-b pb-4 last:border-none"
                 >
-                  <div className="flex items-center gap-4">
-                    <img
-                      src={item.thumbnail}
-                      alt={item.title}
-                      className="w-16 h-16 object-cover rounded-md"
-                      loading="lazy"
-                    />
-                    <div>
-                      <p className="font-bold">{item.title}</p>
-                      <p className="text-gray-500">{item.description}</p>
-                      <p className="text-gray-500">Price: ₹{item.price}</p>
-                      <p className="text-gray-500">Quantity: {item.quantity}</p>
-                    </div>
+                  <img
+                    src={item.thumbnail}
+                    alt={item.title}
+                    className="w-20 h-20 object-cover rounded-md shadow-sm"
+                    loading="lazy"
+                  />
+                  <div className="flex-1">
+                    <p className="text-lg font-semibold text-gray-800">
+                      {item.title}
+                    </p>
+                    <p className="text-sm text-gray-500">{item.description}</p>
+                    <p className="text-sm text-gray-500">
+                      Price: ₹{item.price.toLocaleString()}
+                    </p>
+                    <p className="text-sm text-gray-500">
+                      Quantity: {item.quantity}
+                    </p>
                   </div>
                 </li>
               ))}
             </ul>
-            <div className="text-right font-bold text-gray-800">
-              Total: ₹{order.items.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2)}
+            <div className="text-right mt-4">
+              <p className="text-lg font-bold text-gray-900">
+                Total: ₹
+                {order.items
+                  .reduce(
+                    (total, item) => total + item.price * item.quantity,
+                    0
+                  )
+                  .toFixed(2)}
+              </p>
             </div>
           </div>
         ))}

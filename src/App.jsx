@@ -6,10 +6,10 @@ import {
   LandingPage,
   ProductListingPage,
   ProductDetails,
+  Orders,
 } from "./pages"
 import { Suspense } from "react"
 import Loader from "./components/Loading"
-import Orders from "./pages/Orders"
 
 export default function App() {
   return (
@@ -23,7 +23,7 @@ export default function App() {
               <Route path="/products" element={<ProductListingPage />} />
               <Route path="/product/:id" element={<ProductDetails />} />
               <Route path="/cart" element={<Cart />} />
-              <Route path="/order" element={<Orders />} />
+              <Route path="/orders" element={<Orders />} />
               <Route path="/favourite" element={<FavoriteItems />} />
             </Routes>
           </main>

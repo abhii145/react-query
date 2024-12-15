@@ -90,7 +90,7 @@ describe("Cart", () => {
 
     expect(screen.getByText("Product 1")).toBeInTheDocument()
     expect(screen.getByText("Description 1...")).toBeInTheDocument()
-    expect(screen.queryAllByText("$10.00").length).toBeGreaterThan(0)
+    expect(screen.queryAllByText("₹10.00").length).toBeGreaterThan(0)
   })
 
   it("handles increase quantity", () => {

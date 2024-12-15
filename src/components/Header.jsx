@@ -55,7 +55,7 @@ const Header = () => {
         </Link>
 
         <Link
-          to="/order"
+          to="/orders"
           className="text-xl font-bold"
           data-testid="order-link"
           aria-label="Order"
