@@ -11,11 +11,13 @@ import EmptyStateCard from "../components/EmptyStateCard"
 import { IoCartOutline } from "react-icons/io5"
 import { toast } from "react-toastify"
 import { Link } from "react-router-dom"
+import { useRazorpay, RazorpayOrderOptions } from "react-razorpay"
 
 const Cart = () => {
   const dispatch = useDispatch()
   const cartItems = useSelector((state) => state.cart.items)
   const favoriteItems = useSelector((state) => state.favorites.favorites)
+  const { error, isLoading, Razorpay } = useRazorpay()
 
   const handleIncrease = (productId) => {
     dispatch(increaseQuantity(productId))
@@ -53,6 +55,43 @@ const Cart = () => {
     return cartItems
       ?.reduce((total, item) => total + item.price * item.quantity, 0)
       .toFixed(2)
+  }
+
+  const handleBuyNow = async () => {
+    const cartDetails = cartItems.map((item) => ({
+      title: item.title,
+      thumbnail: item.thumbnail,
+      quantity: item.quantity,
+      price: item.price,
+    }))
+
+    const totalAmount = calculateTotal() * 100 // Convert to paise
+
+    const options = {
+      key: import.meta.env.VITE_RAZORPAY_KEY,
+      amount: totalAmount,
+      currency: "INR",
+      name: "Test Company",
+      description: "Test Transaction",
+      handler: (response) => {
+        console.log(response)
+        toast.success("Payment Successful!")
+      },
+      prefill: {
+        name: "Abhishek Yadav",
+        email: import.meta.env.VITE_USER_EMAIL,
+        contact: import.meta.env.VITE_USER_CONTACT,
+      },
+      theme: {
+        color: "#F37254",
+      },
+      method: {
+        upi: true,
+      },
+    }
+
+    const razorpayInstance = new Razorpay(options)
+    razorpayInstance.open()
   }
 
   if (cartItems.length === 0) {
@@ -142,7 +181,7 @@ const Cart = () => {
                     />
                   </div>
                   <h3 className="text-base font-bold text-gray-800 mt-auto">
-                    ${(item.price * item.quantity).toFixed(2)}
+                    ₹{(item.price * item.quantity).toFixed(2)}
                   </h3>
                 </div>
               </div>
@@ -155,17 +194,17 @@ const Cart = () => {
           <ul className="text-gray-800 space-y-4">
             <li className="flex flex-wrap gap-4 text-sm">
               Subtotal{" "}
-              <span className="ml-auto font-bold">${calculateTotal()}</span>
+              <span className="ml-auto font-bold">₹{calculateTotal()}</span>
             </li>
             <li className="flex flex-wrap gap-4 text-sm">
-              Shipping <span className="ml-auto font-bold">$0.00</span>
+              Shipping <span className="ml-auto font-bold">₹0.00</span>
             </li>
             <li className="flex flex-wrap gap-4 text-sm">
-              Tax <span className="ml-auto font-bold">$0.00</span>
+              Tax <span className="ml-auto font-bold">₹0.00</span>
             </li>
             <hr className="border-gray-300" />
             <li className="flex flex-wrap gap-4 text-sm font-bold">
-              Total <span className="ml-auto">${calculateTotal()}</span>
+              Total <span className="ml-auto">₹{calculateTotal()}</span>
             </li>
           </ul>
 
@@ -173,6 +212,7 @@ const Cart = () => {
             <button
               type="button"
               className="text-sm px-4 py-2.5 w-full font-semibold tracking-wide bg-gray-800 hover:bg-gray-900 text-white rounded-md"
+              onClick={handleBuyNow}
             >
               Buy Now
             </button>
