@@ -44,17 +44,16 @@ describe("FavoriteItems", () => {
     })
   })
 
-
-    it("matches snapshot", () => {
-      const { asFragment } = render(
-        <Provider store={store}>
-          <MemoryRouter>
-            <FavoriteItems />
-          </MemoryRouter>
-        </Provider>
-      )
-      expect(asFragment()).toMatchSnapshot()
-    })
+  it("matches snapshot", () => {
+    const { asFragment } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <FavoriteItems />
+        </MemoryRouter>
+      </Provider>
+    )
+    expect(asFragment()).toMatchSnapshot()
+  })
 
   it("renders empty favorites message when there are no favorite items", () => {
     store = createMockStore({
@@ -70,19 +69,6 @@ describe("FavoriteItems", () => {
     )
 
     expect(screen.getByText("Your Favorites is Empty")).toBeInTheDocument()
-  })
-
-  it("renders favorite items correctly", () => {
-    render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <FavoriteItems />
-        </MemoryRouter>
-      </Provider>
-    )
-
-    expect(screen.getByText("Favorite Product 1")).toBeInTheDocument()
-    expect(screen.getByText("$20")).toBeInTheDocument()
   })
 
   it("handles remove from favorites", () => {
@@ -112,5 +98,99 @@ describe("FavoriteItems", () => {
     })
   })
 
+  it("renders multiple favorite items correctly", () => {
+    store = createMockStore({
+      favorites: {
+        favorites: [
+          {
+            id: 1,
+            title: "Favorite Product 1",
+            name: "Product 1",
+            price: 20,
+            thumbnail: "thumbnail1.jpg",
+          },
+          {
+            id: 2,
+            title: "Favorite Product 2",
+            name: "Product 2",
+            price: 30,
+            thumbnail: "thumbnail2.jpg",
+          },
+        ],
+      },
+    })
 
+    render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <FavoriteItems />
+        </MemoryRouter>
+      </Provider>
+    )
+
+    expect(screen.getByText("Favorite Product 1")).toBeInTheDocument()
+    expect(screen.getByText("Favorite Product 2")).toBeInTheDocument()
+    expect(screen.getByText("₹20")).toBeInTheDocument()
+    expect(screen.getByText("₹30")).toBeInTheDocument()
+  })
+
+  it("handles remove from favorites for multiple items", () => {
+    store = createMockStore({
+      favorites: {
+        favorites: [
+          {
+            id: 1,
+            title: "Favorite Product 1",
+            name: "Product 1",
+            price: 20,
+            thumbnail: "thumbnail1.jpg",
+          },
+          {
+            id: 2,
+            title: "Favorite Product 2",
+            name: "Product 2",
+            price: 30,
+            thumbnail: "thumbnail2.jpg",
+          },
+        ],
+      },
+    })
+
+    render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <FavoriteItems />
+        </MemoryRouter>
+      </Provider>
+    )
+
+    fireEvent.click(screen.getByTestId("delete-1"))
+    fireEvent.click(screen.getByTestId("delete-2"))
+    const actions = store.dispatch.mock.calls.map((call) => call[0])
+    expect(actions).toContainEqual({
+      type: "favorites/toggleFavorite",
+      payload: {
+        id: 1,
+        title: "Favorite Product 1",
+        name: "Product 1",
+        price: 20,
+        thumbnail: "thumbnail1.jpg",
+      },
+    })
+    expect(actions).toContainEqual({
+      type: "favorites/toggleFavorite",
+      payload: {
+        id: 2,
+        title: "Favorite Product 2",
+        name: "Product 2",
+        price: 30,
+        thumbnail: "thumbnail2.jpg",
+      },
+    })
+    expect(toast.error).toHaveBeenCalledWith("Removed from favorites", {
+      position: "bottom-right",
+      autoClose: 800,
+    })
+  })
 })
+

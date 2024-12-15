@@ -84,7 +84,7 @@ const Cart = () => {
         dispatch(clearCart())
 
         toast.success("Payment Successful!")
-        navigate("/order")
+        navigate("/orders")
       },
       prefill: {
         name: "Abhishek Yadav",

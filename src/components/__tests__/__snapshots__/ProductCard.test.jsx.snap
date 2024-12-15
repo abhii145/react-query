@@ -47,7 +47,7 @@ exports[`ProductCard > matches snapshot 1`] = `
             <p
               class="text-sm font-medium text-gray-900"
             >
-              100
+              ₹ 100
             </p>
           </div>
         </div>
@@ -87,7 +87,7 @@ exports[`ProductCard > matches snapshot 1`] = `
             <p
               class="text-sm font-medium text-gray-900"
             >
-              200
+              ₹ 200
             </p>
           </div>
         </div>

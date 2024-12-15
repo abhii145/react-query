@@ -39,20 +39,20 @@ describe("ProductDetails", () => {
     })
   })
 
-    it("matches snapshot", () => {
-      const { asFragment } = render(
-        <Provider store={store}>
-          <QueryClientProvider client={queryClient}>
-            <MemoryRouter initialEntries={["/product/1"]}>
-              <Routes>
-                <Route path="/product/:id" element={<ProductDetails />} />
-              </Routes>
-            </MemoryRouter>
-          </QueryClientProvider>
-        </Provider>
-      )
-      expect(asFragment()).toMatchSnapshot()
-    })
+  it("matches snapshot", () => {
+    const { asFragment } = render(
+      <Provider store={store}>
+        <QueryClientProvider client={queryClient}>
+          <MemoryRouter initialEntries={["/product/1"]}>
+            <Routes>
+              <Route path="/product/:id" element={<ProductDetails />} />
+            </Routes>
+          </MemoryRouter>
+        </QueryClientProvider>
+      </Provider>
+    )
+    expect(asFragment()).toMatchSnapshot()
+  })
 
   it("renders product details correctly", async () => {
     render(
@@ -67,10 +67,13 @@ describe("ProductDetails", () => {
       </Provider>
     )
 
-    await waitFor(async () => {
-      expect(await screen.findByTestId("product-title")).toBeInTheDocument()
-      expect(screen.getByTestId("product-price")).toBeInTheDocument()
-    }, { timeout: 5000 })
+    await waitFor(
+      async () => {
+        expect(await screen.findByTestId("product-title")).toBeInTheDocument()
+        expect(screen.getByTestId("product-price")).toBeInTheDocument()
+      },
+      { timeout: 5000 }
+    )
   })
 
   it("handles add to cart", async () => {
@@ -97,14 +100,17 @@ describe("ProductDetails", () => {
         availabilityStatus: "Low Stock",
         brand: "Essence",
         category: "beauty",
-        description: "The Essence Mascara Lash Princess is a popular mascara known for its volumizing and lengthening effects. Achieve dramatic lashes with this long-lasting and cruelty-free formula.",
+        description:
+          "The Essence Mascara Lash Princess is a popular mascara known for its volumizing and lengthening effects. Achieve dramatic lashes with this long-lasting and cruelty-free formula.",
         dimensions: {
           depth: 28.01,
           height: 14.43,
           width: 23.17,
         },
         discountPercentage: 7.17,
-        images: ["https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/1.png"],
+        images: [
+          "https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/1.png",
+        ],
         meta: {
           barcode: "9164035109868",
           createdAt: "2024-05-23T08:56:21.618Z",
@@ -141,7 +147,8 @@ describe("ProductDetails", () => {
         sku: "RCH45Q1A",
         stock: 5,
         tags: ["beauty", "mascara"],
-        thumbnail: "https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/thumbnail.png",
+        thumbnail:
+          "https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/thumbnail.png",
         warrantyInformation: "1 month warranty",
         weight: 2,
       },
@@ -152,5 +159,45 @@ describe("ProductDetails", () => {
     })
   })
 
+  it("handles thumbnail click", async () => {
+    render(
+      <Provider store={store}>
+        <QueryClientProvider client={queryClient}>
+          <MemoryRouter initialEntries={["/product/1"]}>
+            <Routes>
+              <Route path="/product/:id" element={<ProductDetails />} />
+            </Routes>
+          </MemoryRouter>
+        </QueryClientProvider>
+      </Provider>
+    )
 
+    const thumbnail = await screen.findByTestId("thumbnail-0")
+    fireEvent.click(thumbnail)
+    expect(screen.getByTestId("selected-image")).toHaveAttribute(
+      "src",
+      "https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/1.png"
+    )
+  })
+
+  it("handles thumbnail keydown", async () => {
+    render(
+      <Provider store={store}>
+        <QueryClientProvider client={queryClient}>
+          <MemoryRouter initialEntries={["/product/1"]}>
+            <Routes>
+              <Route path="/product/:id" element={<ProductDetails />} />
+            </Routes>
+          </MemoryRouter>
+        </QueryClientProvider>
+      </Provider>
+    )
+
+    const thumbnail = await screen.findByTestId("thumbnail-0")
+    fireEvent.keyDown(thumbnail, { key: "Enter" })
+    expect(screen.getByTestId("selected-image")).toHaveAttribute(
+      "src",
+      "https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/1.png"
+    )
+  })
 })

@@ -142,7 +142,7 @@ exports[`Cart > matches snapshot 1`] = `
             <h3
               class="text-base font-bold text-gray-800 mt-auto"
             >
-              $10.00
+              ₹10.00
             </h3>
           </div>
         </div>
@@ -160,7 +160,7 @@ exports[`Cart > matches snapshot 1`] = `
             <span
               class="ml-auto font-bold"
             >
-              $10.00
+              ₹10.00
             </span>
           </li>
           <li
@@ -170,7 +170,7 @@ exports[`Cart > matches snapshot 1`] = `
             <span
               class="ml-auto font-bold"
             >
-              $0.00
+              ₹0.00
             </span>
           </li>
           <li
@@ -180,7 +180,7 @@ exports[`Cart > matches snapshot 1`] = `
             <span
               class="ml-auto font-bold"
             >
-              $0.00
+              ₹0.00
             </span>
           </li>
           <hr
@@ -193,7 +193,7 @@ exports[`Cart > matches snapshot 1`] = `
             <span
               class="ml-auto"
             >
-              $10.00
+              ₹10.00
             </span>
           </li>
         </ul>
@@ -210,7 +210,12 @@ exports[`Cart > matches snapshot 1`] = `
             class="text-sm px-4 py-2.5 w-full font-semibold tracking-wide bg-transparent hover:bg-gray-100 text-gray-800 border border-gray-300 rounded-md"
             type="button"
           >
-            Continue Shopping
+            <a
+              data-discover="true"
+              href="/products"
+            >
+              Continue Shopping
+            </a>
           </button>
         </div>
         <div

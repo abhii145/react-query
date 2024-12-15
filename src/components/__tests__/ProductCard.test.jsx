@@ -31,16 +31,6 @@ describe("ProductCard", () => {
     expect(screen.getByText("Product 2")).toBeInTheDocument()
   })
 
-  it("renders product details", () => {
-    render(
-      <Router>
-        <ProductCard products={products} />
-      </Router>
-    )
-    expect(screen.getByText("Category 1")).toBeInTheDocument()
-    expect(screen.getByText("100")).toBeInTheDocument()
-  })
-
   it("matches snapshot", () => {
     const { asFragment } = render(
       <Router>
@@ -49,4 +39,44 @@ describe("ProductCard", () => {
     )
     expect(asFragment()).toMatchSnapshot()
   })
-})
+
+  it("renders product images", () => {
+    render(
+      <Router>
+        <ProductCard products={products} />
+      </Router>
+    )
+    expect(screen.getByAltText("Product 1")).toBeInTheDocument()
+    expect(screen.getByAltText("Product 2")).toBeInTheDocument()
+  })
+
+  it("renders product links", () => {
+    render(
+      <Router>
+        <ProductCard products={products} />
+      </Router>
+    )
+    expect(screen.getByRole("link", { name: /Product 1/i })).toHaveAttribute("href", "/product/1")
+    expect(screen.getByRole("link", { name: /Product 2/i })).toHaveAttribute("href", "/product/2")
+  })
+
+  it("renders product categories", () => {
+    render(
+      <Router>
+        <ProductCard products={products} />
+      </Router>
+    )
+    expect(screen.getByText("Category 1")).toBeInTheDocument()
+    expect(screen.getByText("Category 2")).toBeInTheDocument()
+  })
+
+  it("renders product prices", () => {
+    render(
+      <Router>
+        <ProductCard products={products} />
+      </Router>
+    )
+    expect(screen.getByText("₹ 100")).toBeInTheDocument()
+    expect(screen.getByText("₹ 200")).toBeInTheDocument()
+  })
+  })
