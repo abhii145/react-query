@@ -43,9 +43,9 @@ describe("ProductDetails", () => {
     const { asFragment } = render(
       <Provider store={store}>
         <QueryClientProvider client={queryClient}>
-          <MemoryRouter initialEntries={["/product/1"]}>
+          <MemoryRouter initialEntries={["/products/1"]}>
             <Routes>
-              <Route path="/product/:id" element={<ProductDetails />} />
+              <Route path="/products/:id" element={<ProductDetails />} />
             </Routes>
           </MemoryRouter>
         </QueryClientProvider>
@@ -58,9 +58,9 @@ describe("ProductDetails", () => {
     render(
       <Provider store={store}>
         <QueryClientProvider client={queryClient}>
-          <MemoryRouter initialEntries={["/product/1"]}>
+          <MemoryRouter initialEntries={["/products/1"]}>
             <Routes>
-              <Route path="/product/:id" element={<ProductDetails />} />
+              <Route path="/products/:id" element={<ProductDetails />} />
             </Routes>
           </MemoryRouter>
         </QueryClientProvider>
@@ -80,9 +80,9 @@ describe("ProductDetails", () => {
     render(
       <Provider store={store}>
         <QueryClientProvider client={queryClient}>
-          <MemoryRouter initialEntries={["/product/1"]}>
+          <MemoryRouter initialEntries={["/products/1"]}>
             <Routes>
-              <Route path="/product/:id" element={<ProductDetails />} />
+              <Route path="/products/:id" element={<ProductDetails />} />
             </Routes>
           </MemoryRouter>
         </QueryClientProvider>
@@ -163,9 +163,9 @@ describe("ProductDetails", () => {
     render(
       <Provider store={store}>
         <QueryClientProvider client={queryClient}>
-          <MemoryRouter initialEntries={["/product/1"]}>
+          <MemoryRouter initialEntries={["/products/1"]}>
             <Routes>
-              <Route path="/product/:id" element={<ProductDetails />} />
+              <Route path="/products/:id" element={<ProductDetails />} />
             </Routes>
           </MemoryRouter>
         </QueryClientProvider>
@@ -184,9 +184,9 @@ describe("ProductDetails", () => {
     render(
       <Provider store={store}>
         <QueryClientProvider client={queryClient}>
-          <MemoryRouter initialEntries={["/product/1"]}>
+          <MemoryRouter initialEntries={["/products/1"]}>
             <Routes>
-              <Route path="/product/:id" element={<ProductDetails />} />
+              <Route path="/products/:id" element={<ProductDetails />} />
             </Routes>
           </MemoryRouter>
         </QueryClientProvider>
