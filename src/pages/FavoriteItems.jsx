@@ -48,7 +48,7 @@ const FavoriteItems = () => {
                 <div className="absolute inset-x-0 bottom-0 bg-black/70 text-white p-4">
                   <div className="flex justify-between items-center">
                     <h3 className="text-sm font-bold">
-                      <Link to={`/product/${item.id}`}>
+                      <Link to={`/products/${item.id}`}>
                         <span aria-hidden="true" className="absolute inset-0" />
                         {item.name}
                       </Link>
