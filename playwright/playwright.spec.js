@@ -112,7 +112,7 @@ test.describe("End-to-End Test", () => {
     // Click on the first product
     const firstProduct = page.locator(".group.relative").first()
     await firstProduct.click()
-    await expect(page).toHaveURL(/\/product\/\d+/)
+    await expect(page).toHaveURL(/\/products\/\d+/)
 
     // Click on 'Add to Cart' button
     await page.locator("[data-testid='add-to-cart']").click()
