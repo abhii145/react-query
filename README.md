@@ -32,7 +32,7 @@ Achieves **95% test coverage** with:
 <img width="1728" alt="image" src="https://github.com/user-attachments/assets/81788fff-279e-41aa-baa2-bba3c41ec6a5" />
 
 
-## Performance Highlights  
+## Performance Highlights (Device : Desktop)
 
 This application is optimized for performance and accessibility:  
 
@@ -41,7 +41,9 @@ This application is optimized for performance and accessibility:
 - **Accessibility**: 100  
 - **Performance**: 74  
 
-![Performance Metrics Screenshot](https://github.com/user-attachments/assets/af9a0829-bb7e-4201-bbea-67b40a9e116e)  
+<img width="933" alt="image" src="https://github.com/user-attachments/assets/c0ca931e-c42b-424b-9325-c8c722b48daf" />
+
+
 
 ## Testing Indian Payment Gateways  
 
