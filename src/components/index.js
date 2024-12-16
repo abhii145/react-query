@@ -11,6 +11,7 @@ const ProductCard = React.lazy(() => import("./ProductCard"))
 const SearchBar = React.lazy(() => import("./SearchBar"))
 const SortFilter = React.lazy(() => import("./SortFilter"))
 const Caraousel = React.lazy(() => import("./Carousel"))
+const Breadcrumbs = React.lazy(() => import("./Breadcrumbs"))
 
 export {
   Categories,
@@ -24,4 +25,5 @@ export {
   SearchBar,
   SortFilter,
   Caraousel,
+  Breadcrumbs,
 }
