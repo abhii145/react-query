@@ -18,7 +18,7 @@ const ProductCard = ({ products }) => {
                 <div className="mt-4 flex justify-between">
                   <div>
                     <h3 className="text-sm text-gray-700">
-                      <Link to={`/product/${product.id}`}>
+                      <Link to={`/products/${product.id}`}>
                         <span aria-hidden="true" className="absolute inset-0" />
                         {product.title}
                       </Link>
