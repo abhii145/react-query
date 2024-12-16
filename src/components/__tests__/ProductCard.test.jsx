@@ -56,8 +56,8 @@ describe("ProductCard", () => {
         <ProductCard products={products} />
       </Router>
     )
-    expect(screen.getByRole("link", { name: /Product 1/i })).toHaveAttribute("href", "/product/1")
-    expect(screen.getByRole("link", { name: /Product 2/i })).toHaveAttribute("href", "/product/2")
+    expect(screen.getByRole("link", { name: /Product 1/i })).toHaveAttribute("href", "/products/1")
+    expect(screen.getByRole("link", { name: /Product 2/i })).toHaveAttribute("href", "/products/2")
   })
 
   it("renders product categories", () => {
