@@ -39,7 +39,7 @@ This application is optimized for performance and accessibility:
 - **SEO**: 100  
 - **Best Practices**: 100  
 - **Accessibility**: 100  
-- **Performance**: 74  
+- **Performance**: 98  
 
 <img width="933" alt="image" src="https://github.com/user-attachments/assets/c0ca931e-c42b-424b-9325-c8c722b48daf" />
 
